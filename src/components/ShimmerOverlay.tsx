@@ -279,5 +279,11 @@ export const ShimmerOverlay: React.FC<ShimmerOverlayProps> = ({ trigger }) => {
     };
   }, [trigger]);
 
-  return <canvas ref={canvasRef} className="pointer-events-none fixed inset-0 z-[60]" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="pointer-events-none fixed inset-0 z-[60]"
+      style={{ filter: 'blur(2px)' }}
+    />
+  );
 };
