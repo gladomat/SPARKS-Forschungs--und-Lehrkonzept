@@ -79,6 +79,10 @@ function seedFromRects(rects: DOMRect[], count: number): Array<{ x: number; y: n
   return pts;
 }
 
+// Soft warm beige drawn from the slide palette, plus the deck's orange accent.
+const BEIGE = '224,206,184';
+const SPARK_ORANGE = '232,120,40';
+
 function drawStarburst(
   ctx: CanvasRenderingContext2D,
   x: number,
@@ -88,7 +92,7 @@ function drawStarburst(
   alpha: number,
   orange: boolean,
 ) {
-  const col = orange ? '255,150,70' : '255,255,255';
+  const col = orange ? SPARK_ORANGE : BEIGE;
   ctx.save();
   ctx.translate(x, y);
   ctx.rotate(-Math.PI / 4);
@@ -132,9 +136,9 @@ function drawBigStar(
   b: number,
   orange: boolean,
 ) {
-  const col = orange ? '255,170,90' : '255,255,252';
+  const col = orange ? '232,120,40' : '214,170,110';
   const core = ctx.createRadialGradient(x, y, 0, x, y, size);
-  core.addColorStop(0, `rgba(255,255,255,${b})`);
+  core.addColorStop(0, `rgba(245,228,196,${b})`);
   core.addColorStop(0.18, `rgba(${col},${b * 0.85})`);
   core.addColorStop(1, `rgba(${col},0)`);
   ctx.fillStyle = core;
@@ -153,7 +157,7 @@ function drawBigStar(
     const L = size * (axis ? 3.4 : 2.0);
     const grad = ctx.createLinearGradient(x - ux * L, y - uy * L, x + ux * L, y + uy * L);
     grad.addColorStop(0, `rgba(${col},0)`);
-    grad.addColorStop(0.5, `rgba(255,255,255,${b})`);
+    grad.addColorStop(0.5, `rgba(245,228,196,${b})`);
     grad.addColorStop(1, `rgba(${col},0)`);
     ctx.strokeStyle = grad;
     ctx.lineWidth = axis ? 2.4 : 1.2;
@@ -238,13 +242,6 @@ export const ShimmerOverlay: React.FC<ShimmerOverlayProps> = ({ trigger }) => {
         }
       }
 
-      // Dark scrim so white starbursts read against the light deck; peaks mid-sweep.
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.fillStyle = `rgba(7,9,14,${env * 0.5})`;
-      ctx.fillRect(0, 0, W, H);
-
-      ctx.globalCompositeOperation = 'lighter';
-
       const mp = migrated
         ? easeInOutCubic(clamp((t - migrateStart) / Math.max(0.001, 1 - migrateStart), 0, 1))
         : 0;
@@ -263,8 +260,6 @@ export const ShimmerOverlay: React.FC<ShimmerOverlayProps> = ({ trigger }) => {
         if (d > s.span) continue;
         drawBigStar(ctx, s.x * W, s.y * H, s.size, (1 - d / s.span) * env, s.orange);
       }
-
-      ctx.globalCompositeOperation = 'source-over';
 
       if (t < 1) {
         rafRef.current = requestAnimationFrame(frame);
