@@ -5,15 +5,18 @@ interface ShimmerOverlayProps {
   trigger: number;
 }
 
-const DURATION = 1800; // ms — full dissolve + reconstruct
+const BURST_MS = 1200; // duration of each sparkle burst
+const GIVE_UP_MS = 2600; // stop waiting for the incoming slide after this
 const MAX_PARTICLES = 520;
 const SLIDE_SELECTOR = '[data-shimmer-slide]';
 
+// Soft warm beige drawn from the slide palette, plus the deck's orange accent.
+const BEIGE = '224,206,184';
+const SPARK_ORANGE = '232,120,40';
+
 interface Particle {
-  ox: number;
-  oy: number;
-  tx: number;
-  ty: number;
+  x: number;
+  y: number;
   size: number;
   streak: number;
   twPhase: number;
@@ -22,16 +25,25 @@ interface Particle {
   orange: boolean;
 }
 
-function lerp(a: number, b: number, t: number) {
-  return a + (b - a) * t;
-}
-
 function clamp(v: number, lo: number, hi: number) {
   return Math.min(hi, Math.max(lo, v));
 }
 
-function easeInOutCubic(t: number) {
-  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+function smoothstep(e: number) {
+  return e * e * (3 - 2 * e);
+}
+
+/** Asymmetric envelope: ramp up over the first 1/3, ramp down over the last 2/3. */
+function rampEnv(local: number) {
+  if (local <= 0 || local >= 1) return 0;
+  const up = clamp(local / (1 / 3), 0, 1);
+  const down = clamp((1 - local) / (2 / 3), 0, 1);
+  return smoothstep(Math.min(up, down));
+}
+
+/** Growth factor: 0 → 1 over the ramp-up third, then held at full size. */
+function growFactor(local: number) {
+  return smoothstep(clamp(local / (1 / 3), 0, 1));
 }
 
 /** Line-level bounding rects of every visible text node under `root`. */
@@ -53,35 +65,30 @@ function sampleTextRects(root: Element): DOMRect[] {
   return rects;
 }
 
-/** Scatter `count` seed points across text rects, weighted by line width. */
-function seedFromRects(rects: DOMRect[], count: number): Array<{ x: number; y: number }> {
-  const pts: Array<{ x: number; y: number }> = [];
-  const total = rects.reduce((s, r) => s + r.width, 0);
-  if (!total) {
-    // Fallback: a soft band across the middle of the screen.
-    for (let i = 0; i < count; i++) {
-      pts.push({
-        x: window.innerWidth * (0.15 + Math.random() * 0.7),
-        y: window.innerHeight * (0.35 + Math.random() * 0.3),
-      });
-    }
-    return pts;
-  }
-  for (const r of rects) {
-    const n = Math.max(1, Math.round(count * (r.width / total)));
-    for (let i = 0; i < n; i++) {
-      pts.push({
-        x: r.left + Math.random() * r.width,
-        y: r.top + (0.2 + Math.random() * 0.6) * r.height,
-      });
-    }
-  }
-  return pts;
-}
+/** Build particles scattered across text rects, weighted by line width. */
+function makeParticles(rects: DOMRect[]): Particle[] {
+  const mk = (x: number, y: number): Particle => ({
+    x,
+    y,
+    size: 0.8 + Math.random() * 2.6,
+    streak: 14 + Math.random() * 60,
+    twPhase: Math.random() * Math.PI * 2,
+    twSpeed: 5 + Math.random() * 9,
+    brightness: 0.5 + Math.random() * 0.5,
+    orange: Math.random() < 0.16,
+  });
 
-// Soft warm beige drawn from the slide palette, plus the deck's orange accent.
-const BEIGE = '224,206,184';
-const SPARK_ORANGE = '232,120,40';
+  const total = rects.reduce((s, r) => s + r.width, 0);
+  const out: Particle[] = [];
+  if (!total) return out;
+  for (const r of rects) {
+    const n = Math.max(1, Math.round(MAX_PARTICLES * (r.width / total)));
+    for (let i = 0; i < n; i++) {
+      out.push(mk(r.left + Math.random() * r.width, r.top + (0.2 + Math.random() * 0.6) * r.height));
+    }
+  }
+  return out.slice(0, MAX_PARTICLES);
+}
 
 function drawStarburst(
   ctx: CanvasRenderingContext2D,
@@ -168,6 +175,23 @@ function drawBigStar(
   }
 }
 
+function drawBurst(
+  ctx: CanvasRenderingContext2D,
+  particles: Particle[],
+  local: number,
+  nowS: number,
+) {
+  const env = rampEnv(local);
+  if (env <= 0) return;
+  const grow = growFactor(local);
+  for (const p of particles) {
+    const tw = 0.5 + 0.5 * Math.sin(p.twPhase + nowS * p.twSpeed);
+    const b = env * tw * p.brightness;
+    if (b <= 0.02) continue;
+    drawStarburst(ctx, p.x, p.y, p.size * (0.12 + 0.88 * grow), p.streak * (0.2 + 0.8 * grow), b, p.orange);
+  }
+}
+
 export const ShimmerOverlay: React.FC<ShimmerOverlayProps> = ({ trigger }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const rafRef = useRef<number | null>(null);
@@ -187,84 +211,62 @@ export const ShimmerOverlay: React.FC<ShimmerOverlayProps> = ({ trigger }) => {
     canvas.style.width = `${W}px`;
     canvas.style.height = `${H}px`;
 
-    // Outgoing slide: capture now, before it unmounts.
+    // Burst A: the outgoing slide (still mounted now, before AnimatePresence swaps it).
     const outgoingEl = document.querySelector(SLIDE_SELECTOR);
-    const fromRects = outgoingEl ? sampleTextRects(outgoingEl) : [];
-    const fromPts = seedFromRects(fromRects, MAX_PARTICLES).slice(0, MAX_PARTICLES);
+    const aParticles = reduce || !outgoingEl ? [] : makeParticles(sampleTextRects(outgoingEl));
 
-    const particles: Particle[] = fromPts.map((p) => ({
-      ox: p.x,
-      oy: p.y,
-      tx: p.x,
-      ty: p.y,
-      size: 0.8 + Math.random() * 2.6,
-      streak: 14 + Math.random() * 60,
-      twPhase: Math.random() * Math.PI * 2,
-      twSpeed: 5 + Math.random() * 9,
-      brightness: 0.5 + Math.random() * 0.5,
-      orange: Math.random() < 0.16,
-    }));
+    // Burst B: seeded once the incoming slide mounts.
+    let bParticles: Particle[] = [];
+    let bSeeded = false;
+    let bStart = 0;
 
     const stars = Array.from({ length: reduce ? 0 : 2 + Math.floor(Math.random() * 2) }, () => ({
       x: 0.18 + Math.random() * 0.64,
       y: 0.2 + Math.random() * 0.55,
-      at: 0.3 + Math.random() * 0.45,
+      at: 0.28 + Math.random() * 0.45, // fraction of the estimated total window
       span: 0.16,
       size: 46 + Math.random() * 44,
       orange: Math.random() < 0.3,
     }));
 
-    let migrated = false;
-    let migrateStart = 0;
-    const start = performance.now();
+    const aStart = performance.now();
+    const estTotal = BURST_MS + 700; // rough window for star timing
 
     const frame = (now: number) => {
-      const t = clamp((now - start) / DURATION, 0, 1);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, W, H);
+      const nowS = now / 1000;
 
-      const env = Math.sin(Math.PI * t);
+      const localA = (now - aStart) / BURST_MS;
 
-      // Once the incoming slide has mounted, retarget particles onto its text.
-      if (!migrated) {
+      if (!bSeeded && !reduce) {
         const el = document.querySelector(SLIDE_SELECTOR);
         if (el && el !== outgoingEl) {
-          const toPts = seedFromRects(sampleTextRects(el), particles.length);
-          if (toPts.length) {
-            particles.forEach((p, i) => {
-              const tp = toPts[i % toPts.length];
-              p.tx = tp.x;
-              p.ty = tp.y;
-            });
-            migrated = true;
-            migrateStart = t;
+          bParticles = makeParticles(sampleTextRects(el));
+          if (bParticles.length) {
+            bSeeded = true;
+            bStart = now;
           }
         }
       }
 
-      const mp = migrated
-        ? easeInOutCubic(clamp((t - migrateStart) / Math.max(0.001, 1 - migrateStart), 0, 1))
-        : 0;
+      drawBurst(ctx, aParticles, localA, nowS);
+      if (bSeeded) drawBurst(ctx, bParticles, (now - bStart) / BURST_MS, nowS);
 
-      for (const p of particles) {
-        const tw = 0.5 + 0.5 * Math.sin(p.twPhase + t * p.twSpeed * Math.PI);
-        const b = env * tw * p.brightness;
-        if (b <= 0.02) continue;
-        const x = lerp(p.ox, p.tx, mp);
-        const y = lerp(p.oy, p.ty, mp) + Math.sin(t * 6 + p.twPhase) * 6 * (1 - Math.abs(mp - 0.5) * 2);
-        drawStarburst(ctx, x, y, p.size, p.streak * (0.5 + env * 0.5), b, p.orange);
-      }
-
+      const starWindow = clamp((now - aStart) / estTotal, 0, 1);
+      const starEnv = rampEnv(starWindow);
       for (const s of stars) {
-        const d = Math.abs(t - s.at);
+        const d = Math.abs(starWindow - s.at);
         if (d > s.span) continue;
-        drawBigStar(ctx, s.x * W, s.y * H, s.size, (1 - d / s.span) * env, s.orange);
+        drawBigStar(ctx, s.x * W, s.y * H, s.size, (1 - d / s.span) * Math.max(starEnv, 0.3), s.orange);
       }
 
-      if (t < 1) {
-        rafRef.current = requestAnimationFrame(frame);
-      } else {
+      const aDone = localA >= 1;
+      const bDone = bSeeded ? (now - bStart) / BURST_MS >= 1 : now - aStart > GIVE_UP_MS;
+      if (aDone && bDone) {
         ctx.clearRect(0, 0, W, H);
+      } else {
+        rafRef.current = requestAnimationFrame(frame);
       }
     };
 
