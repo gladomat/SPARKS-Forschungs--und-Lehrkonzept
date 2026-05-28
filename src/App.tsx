@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useCallback, createContext } from 'react';
+import React, { createContext } from 'react';
 import { PresentationLayout } from './components/PresentationLayout';
+import { ShimmerOverlay } from './components/ShimmerOverlay';
 import { SlideTitle } from './components/SlideTitle';
 import { Slide02ModuleAtAGlance } from './slides/Slide02ModuleAtAGlance';
 import { Slide03WhatDataScienceMeansHere } from './slides/Slide03WhatDataScienceMeansHere';
@@ -11,6 +12,7 @@ import { Slide08AssessmentConcept } from './slides/Slide08AssessmentConcept';
 import { Slide09DataScienceStudio } from './slides/Slide09DataScienceStudio';
 import { Slide10WhyThisConceptWorks } from './slides/Slide10WhyThisConceptWorks';
 import { AnimatePresence, motion } from 'motion/react';
+import { useSyncedNavigation, getTransitionVariants } from './lib/useSyncedNavigation';
 
 /* ------------------------------------------------------------------ */
 /*  Slide definitions                                                  */
@@ -138,52 +140,12 @@ const SECTIONS = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Transition logic                                                   */
-/* ------------------------------------------------------------------ */
-
-type TransitionType = 'horizontal' | 'vertical' | 'shimmer';
-type TransitionDirection = 'forward' | 'backward';
-
-function getSectionForIndex(index: number): string | undefined {
-  return SLIDES[index]?.section;
-}
-
-function getTransitionVariants(type: TransitionType, direction: TransitionDirection) {
-  if (type === 'horizontal') {
-    const xOffset = direction === 'forward' ? 300 : -300;
-    return {
-      initial: { opacity: 0, x: xOffset },
-      animate: { opacity: 1, x: 0 },
-      exit: { opacity: 0, x: -xOffset },
-    };
-  }
-
-  if (type === 'vertical') {
-    const yOffset = direction === 'forward' ? 300 : -300;
-    return {
-      initial: { opacity: 0, y: yOffset },
-      animate: { opacity: 1, y: 0 },
-      exit: { opacity: 0, y: -yOffset },
-    };
-  }
-
-  // shimmer — placeholder, will be refined during implementation
-  return {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
-  };
-}
-
-/* ------------------------------------------------------------------ */
 /*  App                                                                */
 /* ------------------------------------------------------------------ */
 
 export default function App() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentStep, setCurrentStep] = useState(0);
-  const [transitionType, setTransitionType] = useState<TransitionType>('horizontal');
-  const [transitionDirection, setTransitionDirection] = useState<TransitionDirection>('forward');
+  const { state, navigateTo } = useSyncedNavigation(SLIDES);
+  const { index: currentIndex, step: currentStep } = state;
 
   const isPrint = window.location.search.includes('print');
   const showNotes = window.location.search.includes('notes');
@@ -191,58 +153,12 @@ export default function App() {
   const currentSlide = SLIDES[currentIndex];
   const showSidebar = !!currentSlide.section;
 
-  const navigateTo = useCallback((nextIndex: number, source: 'keys' | 'sidebar') => {
-    if (nextIndex < 0 || nextIndex >= SLIDES.length || nextIndex === currentIndex) return;
-
-    const direction: TransitionDirection = nextIndex > currentIndex ? 'forward' : 'backward';
-    const currentSection = getSectionForIndex(currentIndex);
-    const nextSection = getSectionForIndex(nextIndex);
-    const crossingSection = currentSection !== nextSection;
-
-    let type: TransitionType;
-    if (source === 'sidebar' && crossingSection) {
-      type = 'shimmer';
-    } else if (crossingSection) {
-      type = 'vertical';
-    } else {
-      type = 'horizontal';
-    }
-
-    setTransitionType(type);
-    setTransitionDirection(direction);
-    setCurrentIndex(nextIndex);
-    const nextSlide = SLIDES[nextIndex];
-    setCurrentStep(direction === 'backward' && nextSlide.steps ? nextSlide.steps - 1 : 0);
-  }, [currentIndex]);
-
   function navigateToSlideId(id: string) {
-    const idx = SLIDES.findIndex(s => s.id === id);
+    const idx = SLIDES.findIndex((s) => s.id === id);
     if (idx !== -1) navigateTo(idx, 'sidebar');
   }
 
-  const maxStep = (currentSlide.steps ?? 1) - 1;
-
-  useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        if (currentStep < maxStep) {
-          setCurrentStep(s => s + 1);
-        } else {
-          navigateTo(currentIndex + 1, 'keys');
-        }
-      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        if (currentStep > 0) {
-          setCurrentStep(s => s - 1);
-        } else {
-          navigateTo(currentIndex - 1, 'keys');
-        }
-      }
-    }
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [currentIndex, currentStep, maxStep, navigateTo]);
-
-  const variants = getTransitionVariants(transitionType, transitionDirection);
+  const variants = getTransitionVariants(state.transitionType, state.transitionDirection);
 
   /* Print mode */
   if (isPrint) {
@@ -289,6 +205,7 @@ export default function App() {
         slides: s.slides,
       }))}
     >
+      <ShimmerOverlay trigger={state.shimmerTrigger} />
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide.id}
