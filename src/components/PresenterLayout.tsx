@@ -15,13 +15,17 @@ interface PresenterLayoutProps {
   currentStep: number;
 }
 
-/** Renders a slide component scaled into a fixed 320x180 (16:9) thumbnail. */
-const Thumbnail: React.FC<{ node: React.ReactNode; step: number }> = ({ node, step }) => (
+/** Renders a slide component scaled into a fixed 16:9 thumbnail. */
+const Thumbnail: React.FC<{ node: React.ReactNode; step: number; scale?: number }> = ({
+  node,
+  step,
+  scale = 0.25,
+}) => (
   <div
     className="relative overflow-hidden rounded-lg border border-surface-container-high bg-background shrink-0"
-    style={{ width: 320, height: 180 }}
+    style={{ width: 1280 * scale, height: 720 * scale }}
   >
-    <div className="origin-top-left" style={{ width: 1280, height: 720, transform: 'scale(0.25)' }}>
+    <div className="origin-top-left" style={{ width: 1280, height: 720, transform: `scale(${scale})` }}>
       <SlideStepContext.Provider value={step}>{node}</SlideStepContext.Provider>
     </div>
   </div>
@@ -68,7 +72,7 @@ export const PresenterLayout: React.FC<PresenterLayoutProps> = ({
             <span className="font-mono text-[0.6rem] text-white/40 tracking-[0.15em] uppercase">
               Current
             </span>
-            <Thumbnail node={current.component} step={currentStep} />
+            <Thumbnail node={current.component} step={currentStep} scale={0.34} />
           </div>
           <div className="flex flex-col gap-2">
             <span className="font-mono text-[0.6rem] text-white/40 tracking-[0.15em] uppercase">

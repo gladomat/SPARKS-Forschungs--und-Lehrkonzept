@@ -118,7 +118,7 @@
   body {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    background-color: #f9f9f9 !important;
+    background-color: #ffffff !important;
     margin: 0;
     padding: 0;
   }
@@ -130,16 +130,25 @@
     break-after: page;
     position: relative;
     overflow: hidden;
-    background-color: #f9f9f9 !important;
+    background-color: #ffffff !important;
   }
 
   .print-slide-container > div {
     width: 100% !important;
     height: 100% !important;
     transform: none !important;
+    background-color: #ffffff !important;
   }
 
   nav, aside, footer, button {
     display: none !important;
+  }
+
+  .blob-orbit-a, .blob-orbit-b, .blob-drift-c {
+    display: none !important;
+  }
+
+  .print-mode {
+    background-color: #ffffff !important;
   }
 }
