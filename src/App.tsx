@@ -232,6 +232,7 @@ export default function App() {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide.id}
+          data-shimmer-slide
           initial={variants.initial}
           animate={variants.animate}
           exit={variants.exit}
