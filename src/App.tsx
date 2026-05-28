@@ -235,7 +235,7 @@ export default function App() {
           initial={variants.initial}
           animate={variants.animate}
           exit={variants.exit}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          transition={{ duration: state.transitionType === 'shimmer' ? 0.7 : 0.3, ease: 'easeInOut' }}
           className="w-full h-full"
         >
           <SlideStepContext.Provider value={currentStep}>
