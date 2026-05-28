@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100;300;400;500;600;700;800;900&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-background: #f9f9f9;
+  --color-surface: #ffffff;
+  --color-surface-dim: #dadada;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f3f3f4;
+  --color-surface-container: #eeeeee;
+  --color-surface-container-high: #e8e8e8;
+  --color-surface-container-highest: #e2e2e2;
+  --color-on-surface: #1a1c1c;
+  --color-on-surface-variant: #5c4038;
+  --color-outline: #916f66;
+  --color-outline-variant: #e6beb2;
+
+  --color-primary: #aa3000;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #d53e00;
+  --color-on-primary-container: #fffbff;
+
+  --color-action-orange: #FF4E07;
+  --color-deep-onyx: #0B0B0B;
+  --color-data-gray: #666666;
+
+  --color-secondary: #5e5e5e;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #e2e2e2;
+
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-on-surface font-body;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Structural accent line */
+.structural-line {
+  @apply bg-action-orange/15;
+}
+
+/* Asymmetric rule */
+.asymmetric-rule {
+  @apply w-32 h-[1px] bg-action-orange;
+}
+
+/* Orbiting blob animations — two blobs swap positions in a wide ellipse */
+@keyframes blob-orbit-a {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-35vw, 30vh); }
+  50%  { transform: translate(-60vw, 55vh); }
+  75%  { transform: translate(-25vw, 25vh); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes blob-orbit-b {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(35vw, -30vh); }
+  50%  { transform: translate(55vw, -50vh); }
+  75%  { transform: translate(20vw, -20vh); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes blob-drift-c {
+  0%   { transform: translate(0, 0); }
+  33%  { transform: translate(15vw, -20vh); }
+  66%  { transform: translate(-10vw, 15vh); }
+  100% { transform: translate(0, 0); }
+}
+
+.blob-orbit-a {
+  animation: blob-orbit-a 45s ease-in-out infinite;
+}
+
+.blob-orbit-b {
+  animation: blob-orbit-b 45s ease-in-out infinite;
+}
+
+.blob-drift-c {
+  animation: blob-drift-c 55s ease-in-out infinite;
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background-color: #f9f9f9 !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  .print-slide-container {
+    width: 297mm;
+    height: 210mm;
+    page-break-after: always;
+    break-after: page;
+    position: relative;
+    overflow: hidden;
+    background-color: #f9f9f9 !important;
+  }
+
+  .print-slide-container > div {
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+  }
+
+  nav, aside, footer, button {
+    display: none !important;
+  }
+}

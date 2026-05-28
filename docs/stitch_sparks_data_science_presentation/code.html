@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sparks University - DS-401 Introduction</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#e2e2e2",
+                      "surface-container-low": "#f3f3f4",
+                      "inverse-primary": "#ffb59f",
+                      "on-secondary-fixed": "#1b1b1b",
+                      "error": "#ba1a1a",
+                      "background": "#f9f9f9",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "on-tertiary": "#ffffff",
+                      "outline-variant": "#e6beb2",
+                      "secondary-container": "#e2e2e2",
+                      "surface-variant": "#e2e2e2",
+                      "on-primary-fixed-variant": "#852300",
+                      "on-primary-fixed": "#3a0a00",
+                      "on-primary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "data-gray": "#666666",
+                      "on-background": "#1a1c1c",
+                      "tertiary": "#5b5c5c",
+                      "on-primary-container": "#fffbff",
+                      "inverse-surface": "#2f3131",
+                      "on-surface": "#1a1c1c",
+                      "primary-fixed": "#ffdbd0",
+                      "surface-container": "#eeeeee",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "surface-bright": "#f9f9f9",
+                      "inverse-on-surface": "#f0f1f1",
+                      "surface": "#f9f9f9",
+                      "on-surface-variant": "#5c4038",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-container": "#fcfcfc",
+                      "on-error": "#ffffff",
+                      "on-secondary-container": "#646464",
+                      "primary": "#aa3000",
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "outline": "#916f66",
+                      "surface-tint": "#ae3100",
+                      "action-orange": "#FF4E07",
+                      "primary-container": "#d53e00",
+                      "primary-fixed-dim": "#ffb59f",
+                      "surface-container-high": "#e8e8e8",
+                      "tertiary-container": "#737575",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#e2e2e2",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#474747",
+                      "secondary-fixed-dim": "#c6c6c6",
+                      "surface-dim": "#dadada",
+                      "secondary": "#5e5e5e",
+                      "deep-onyx": "#0B0B0B"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-mobile": "20px",
+                      "margin-desktop": "64px",
+                      "unit": "8px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "label-mono": [
+                              "jetbrainsMono"
+                      ],
+                      "headline-lg": [
+                              "geist"
+                      ],
+                      "headline-md": [
+                              "geist"
+                      ],
+                      "headline-lg-mobile": [
+                              "geist"
+                      ],
+                      "display-lg": [
+                              "geist"
+                      ],
+                      "body-lg": [
+                              "hankenGrotesk"
+                      ],
+                      "body-md": [
+                              "hankenGrotesk"
+                      ],
+                      "caption": [
+                              "hankenGrotesk"
+                      ]
+              },
+              "fontSize": {
+                      "label-mono": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "72px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        @font-face {
+            font-family: 'jetbrainsMono';
+            src: url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+        }
+        @font-face {
+            font-family: 'geist';
+            src: url('https://fonts.googleapis.com/css2?family=Geist:wght@600;700;800&display=swap');
+        }
+        @font-face {
+            font-family: 'hankenGrotesk';
+            src: url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap');
+        }
+        body {
+            font-family: 'hankenGrotesk', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6, .headline {
+            font-family: 'geist', sans-serif;
+        }
+        .mono {
+            font-family: 'jetbrainsMono', monospace;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row">
+<!-- TopNavBar (Mobile Only) -->
+<header class="md:hidden w-full bg-background border-b border-secondary-container z-50 sticky top-0 px-margin-mobile py-4 flex justify-between items-center">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-deep-onyx">Sparks University</div>
+<button class="text-primary hover:text-action-orange transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<nav class="hidden md:flex fixed left-0 top-0 h-full flex-col pt-24 pb-8 w-64 bg-surface-container-low border-r border-secondary-container z-40">
+<div class="px-gutter mb-8">
+<div class="w-12 h-12 rounded bg-deep-onyx flex items-center justify-center text-on-primary mb-4">
+<span class="material-symbols-outlined" data-icon="dataset">dataset</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">DS-401</h2>
+<p class="font-label-mono text-label-mono text-secondary mt-1">Applied Data Science</p>
+</div>
+<ul class="flex-1 px-4 space-y-2">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary hover:bg-surface-container-highest transition-all scale-95 active:scale-90 font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined" data-icon="title">title</span>
+                    Title
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface font-bold bg-secondary-container transition-all scale-95 active:scale-90 font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+                    Introduction
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary hover:bg-surface-container-highest transition-all scale-95 active:scale-90 font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+                    Visualization
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary hover:bg-surface-container-highest transition-all scale-95 active:scale-90 font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+                    Case Study
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary hover:bg-surface-container-highest transition-all scale-95 active:scale-90 font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                    Conclusion
+                </a>
+</li>
+</ul>
+<div class="px-gutter mt-auto">
+<button class="w-full flex items-center justify-center gap-2 bg-background border border-deep-onyx text-deep-onyx px-4 py-2 rounded font-label-mono text-label-mono hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                Download Slides
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full md:ml-64 flex flex-col min-h-screen">
+<!-- TopNavBar (Desktop) -->
+<header class="hidden md:flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto border-b border-secondary-container bg-background sticky top-0 z-30">
+<div class="font-headline-md text-headline-md font-bold text-deep-onyx">Sparks University</div>
+<nav class="flex gap-8">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-mono text-label-mono hover:text-primary transition-colors opacity-80" href="#">Modules</a>
+<a class="text-secondary font-label-mono text-label-mono hover:text-primary transition-colors" href="#">Case Studies</a>
+<a class="text-secondary font-label-mono text-label-mono hover:text-primary transition-colors" href="#">Showcase</a>
+</nav>
+<button class="bg-action-orange text-on-primary px-6 py-2 rounded font-label-mono text-label-mono hover:bg-primary-container transition-colors">Present</button>
+</header>
+<!-- Canvas Content -->
+<div class="flex-1 w-full px-margin-mobile md:px-margin-desktop py-12 md:py-24 max-w-container-max mx-auto">
+<div class="mb-16">
+<div class="inline-block border border-secondary-container px-3 py-1 mb-6 rounded font-label-mono text-label-mono text-data-gray bg-surface-container-low">
+                    MODULE 01
+                </div>
+<h1 class="font-display-lg text-display-lg text-deep-onyx mb-6">Module Overview.</h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-3xl">
+                    A comprehensive introduction to the foundational pillars of applied data science. This module establishes the structural framework necessary for advanced analytical techniques.
+                </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-24">
+<!-- Pillars Content -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<!-- Pillar 1 -->
+<div class="border border-secondary-container bg-surface-container-lowest p-6 rounded relative overflow-hidden group hover:border-action-orange transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary-container group-hover:bg-action-orange transition-colors"></div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded bg-surface-container-low flex items-center justify-center text-primary group-hover:text-action-orange transition-colors shrink-0">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-deep-onyx mb-2 text-[24px]">Data Exploration</h3>
+<p class="font-body-md text-body-md text-secondary mb-4">
+                                    Techniques for initial data analysis, identifying patterns, anomalies, and testing hypotheses using summary statistics and graphical representations.
+                                </p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 font-body-md text-body-md text-data-gray">
+<div class="w-2 h-2 bg-action-orange"></div>
+                                        Descriptive Statistics
+                                    </li>
+<li class="flex items-center gap-2 font-body-md text-body-md text-data-gray">
+<div class="w-2 h-2 bg-action-orange"></div>
+                                        Data Cleaning Protocols
+                                    </li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Pillar 2 -->
+<div class="border border-secondary-container bg-surface-container-lowest p-6 rounded relative overflow-hidden group hover:border-action-orange transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary-container group-hover:bg-action-orange transition-colors"></div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded bg-surface-container-low flex items-center justify-center text-primary group-hover:text-action-orange transition-colors shrink-0">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-deep-onyx mb-2 text-[24px]">Statistical Modeling</h3>
+<p class="font-body-md text-body-md text-secondary mb-4">
+                                    Building mathematical representations of observed data to make inferences and predictions with quantified uncertainty.
+                                </p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 font-body-md text-body-md text-data-gray">
+<div class="w-2 h-2 bg-action-orange"></div>
+                                        Regression Analysis
+                                    </li>
+<li class="flex items-center gap-2 font-body-md text-body-md text-data-gray">
+<div class="w-2 h-2 bg-action-orange"></div>
+                                        Hypothesis Testing Frameworks
+                                    </li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Pillar 3 -->
+<div class="border border-secondary-container bg-surface-container-lowest p-6 rounded relative overflow-hidden group hover:border-action-orange transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary-container group-hover:bg-action-orange transition-colors"></div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded bg-surface-container-low flex items-center justify-center text-primary group-hover:text-action-orange transition-colors shrink-0">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-deep-onyx mb-2 text-[24px]">Machine Learning</h3>
+<p class="font-body-md text-body-md text-secondary mb-4">
+                                    Implementation of algorithms that allow systems to learn and improve from experience without being explicitly programmed.
+                                </p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 font-body-md text-body-md text-data-gray">
+<div class="w-2 h-2 bg-action-orange"></div>
+                                        Supervised vs. Unsupervised
+                                    </li>
+<li class="flex items-center gap-2 font-body-md text-body-md text-data-gray">
+<div class="w-2 h-2 bg-action-orange"></div>
+                                        Model Evaluation Metrics
+                                    </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Context Image -->
+<div class="lg:col-span-5 relative min-h-[400px] lg:min-h-full rounded overflow-hidden border border-secondary-container">
+<img alt="" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ugI9bYN4s5i7Rft_xtoKPd7hubOfNRjEE38qdbf7XZcwACm5Wl6jatWB-Y6WteskN2ggomUu2Ei9pFo1_WbyuCkpEOJS_h1qx_blvo4U4n7ci6R9y3FhCrhH4jMGQyomItWqMoe4jyFI7U8tuss7I3OlbGBK4XBvgP_AGY0MXvgc0OMHBZGwhRWSrNmAhxy9HqW7b-gbqA6BYqnmgJnqjsMlyXGdK-mptk6lZtR0rEYJYvH63UCesUR"/>
+<div class="absolute bottom-4 left-4 bg-background/90 backdrop-blur border border-secondary-container px-3 py-2 rounded">
+<span class="font-label-mono text-label-mono text-deep-onyx flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="insert_chart">insert_chart</span>
+                            FIG. 1: Ecosystem Overview
+                        </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto border-t border-secondary-container bg-background px-margin-mobile md:px-margin-desktop py-6 w-full max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="font-caption text-caption text-data-gray">
+                © 2024 Sparks University of Applied Sciences. All Rights Reserved.
+            </div>
+<nav class="flex gap-6">
+<a class="font-caption text-caption text-data-gray hover:text-deep-onyx transition-opacity opacity-100 hover:opacity-80" href="#">Privacy Policy</a>
+<a class="font-caption text-caption text-data-gray hover:text-deep-onyx transition-opacity opacity-100 hover:opacity-80" href="#">Institutional Repository</a>
+<a class="font-caption text-caption text-data-gray hover:text-deep-onyx transition-opacity opacity-100 hover:opacity-80" href="#">Support</a>
+</nav>
+</footer>
+</main>
+</body></html>
