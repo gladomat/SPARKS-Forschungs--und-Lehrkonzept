@@ -53,10 +53,10 @@ export const PresenterLayout: React.FC<PresenterLayoutProps> = ({
       <div className="flex-grow flex gap-8 px-10 py-8 overflow-hidden">
         {/* Notes */}
         <section className="flex-grow flex flex-col gap-3 overflow-hidden">
-          <div className="font-mono text-xs text-action-orange tracking-[0.15em] uppercase">
+          <div className="font-mono text-sm text-action-orange tracking-[0.15em] uppercase">
             Speaker Notes — {current.presenterTitle}
           </div>
-          <p className="font-body text-lg leading-relaxed text-white/90 overflow-y-auto pr-4 whitespace-pre-wrap">
+          <p className="font-body text-3xl leading-relaxed text-white/90 overflow-y-auto pr-4 whitespace-pre-wrap">
             {current.notes ?? 'No notes for this slide.'}
           </p>
           {currentStep < maxStep && (
@@ -72,7 +72,7 @@ export const PresenterLayout: React.FC<PresenterLayoutProps> = ({
             <span className="font-mono text-[0.6rem] text-white/40 tracking-[0.15em] uppercase">
               Current
             </span>
-            <Thumbnail node={current.component} step={currentStep} scale={0.34} />
+            <Thumbnail node={current.component} step={currentStep} scale={0.44} />
           </div>
           <div className="flex flex-col gap-2">
             <span className="font-mono text-[0.6rem] text-white/40 tracking-[0.15em] uppercase">
