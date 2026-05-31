@@ -4,6 +4,12 @@ A presentation app for a Data Science MIND module teaching concept at SPARKS Uni
 
 ## Language
 
+### Deck Structure
+
+**Part:**
+A top-level division of the deck, shown as a header in the sidebar. There are two: **Teaching Concept** (English, the Lehrkonzept — slides 1–10) and **Forschungskonzept** (German, the XAMA research concept — slides 11–17). Each Part is a self-contained ~10-minute talk; together they form one app for the appointment presentation.
+_Avoid_: chapter, deck (the whole app is the deck)
+
 ### Institution & Module
 
 **SPARKS:**
@@ -61,14 +67,37 @@ _Avoid_: open-book, take-home
 A continuous assessment artifact. The module has four: EDA Evidence Memo (W2), Statistical Reasoning Brief (W3), On-Site Pitch (W4, Assured), Reflection Portfolio (W5, lighter scope).
 _Avoid_: exam, test, assignment, deliverable
 
+### Research Concept (XAMA)
+
+**XAMA:**
+Explainable and Auditable Memory for Data-Analytics Agents. The proposed research programme for the Professur Data Science. Framed as a credibility bridge from prior explainable-AI work, not a full exposition of the system.
+
+**Agent Memory:**
+The persistent store an AI agent keeps of prior decisions, feedback, audience assumptions, and campaign experience. The core thesis: in data-driven communication work, memory is not a convenience feature but a **second decision layer** that shapes recommendations.
+_Avoid_: cache, history, context window
+
+**Accountability:**
+The leading concept of XAMA — a Data-Analytics-Agent should not only give plausible recommendations but make traceable which stored experiences, data, and assumptions those recommendations rest on. Spans explainability and auditability.
+
+**Three Pillars:**
+The structure of the XAMA programme: (1) Explainable Memory Retrieval (why did the agent recall *this*?), (2) Responsible Memory Lifecycle (what may it store, update, forget?), (3) Evaluation & Benchmarking (are recall and explanations trustworthy?). Each pillar yields one technical research question.
+_Avoid_: tracks, themes
+
+**Leitfall:**
+The single running example carrying the research talk: a Data-Analytics-Agent supporting a marketing/communication team — analysing campaign metrics, A/B tests, and audience reactions, then reusing that memory for later recommendations. Every technical point returns to this case.
+_Avoid_: use case (too generic), scenario
+
+**XAMA-Bench:**
+The benchmark proposed under Pillar 3 to measure faithfulness, logging completeness, explanation stability, and forgetting correctness in agentic memory systems. Targeted as a v0.1 deliverable in the first 12 months.
+
 ### Presentation App
 
 **Slide:**
-One screen of the presentation. 10 total. Each has a component file, sparse visual content, and plain-text speaker notes.
+One screen of the presentation. 17 total (10 Teaching Concept + 7 Forschungskonzept). Each has a component file (or a `SlideTitle` invocation for the two title slides), sparse visual content, and plain-text speaker notes.
 
 **Section:**
-A named group of slides in the sidebar navigation. Three sections: Positioning (slides 2–4), Didactic Design (slides 5–7), Assessment (slides 8–9). Title (slide 1) and closing (slide 10) are outside sections.
-_Avoid_: chapter, part
+A named group of slides in the sidebar navigation, nested under a **Part**. Teaching Concept has three: Positioning (slides 2–4), Didactic Design (slides 5–7), Assessment (slides 8–9). Forschungskonzept has three: Ausgangspunkt (12–13), Forschungsprogramm (14–15), Umsetzung (16–17). Each title slide (1 and 11) sits at the head of its Part, outside the sections. Crossing a section boundary triggers a Shimmer (sidebar) or vertical slide (arrow keys).
+_Avoid_: chapter (that's a Part)
 
 **Presenter Mode:**
 A dual-window setup. The audience window shows the clean slide. The presenter window (`?presenter`) shows the current slide, speaker notes, and next slide preview. Both sync via BroadcastChannel.

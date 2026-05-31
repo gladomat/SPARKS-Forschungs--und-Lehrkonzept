@@ -9,10 +9,17 @@ interface NavItem {
   number: number;
 }
 
-interface NavPart {
+interface NavSection {
   id: string;
   label: string;
   slides: NavItem[];
+}
+
+interface NavPart {
+  id: string;
+  label: string;
+  headerTarget: number;
+  sections: NavSection[];
 }
 
 interface PresentationLayoutProps {
@@ -20,22 +27,22 @@ interface PresentationLayoutProps {
   currentSlide: number;
   totalSlides: number;
   showSidebar?: boolean;
-  activeSection?: string;
   onNavigate?: (slideNumber: number) => void;
   parts?: NavPart[];
+  partLabel?: string;
 }
 
 export const PresentationLayout: React.FC<PresentationLayoutProps> = ({
   children,
   currentSlide,
-  totalSlides,
   showSidebar = true,
   onNavigate,
   parts = [],
+  partLabel = 'Lehrkonzept',
 }) => {
-  const activePart = (parts ?? []).find(part =>
-    part.slides.some(slide => slide.number === currentSlide)
-  )?.id ?? parts?.[0]?.id ?? '';
+  const isPartActive = (part: NavPart) =>
+    currentSlide === part.headerTarget ||
+    part.sections.some((sec) => sec.slides.some((s) => s.number === currentSlide));
 
   return (
     <div className="w-full h-screen bg-background text-on-surface flex flex-col overflow-hidden select-none">
@@ -60,16 +67,18 @@ export const PresentationLayout: React.FC<PresentationLayoutProps> = ({
         {/* Sidebar */}
         {showSidebar && (
           <aside className="w-64 flex flex-col py-8 bg-surface-container-low shrink-0 border-r border-surface-container-high overflow-y-auto">
-            <nav className="flex flex-col gap-4 py-2">
-              {(parts ?? []).map((part) => {
-                const isOpen = part.id === activePart;
+            <nav className="flex flex-col gap-3 py-2">
+              {parts.map((part) => {
+                const isOpen = isPartActive(part);
                 return (
                   <div key={part.id}>
                     <button
-                      onClick={() => onNavigate?.(part.slides[0]?.number)}
-                      className="w-full flex items-center justify-between pl-8 pr-4 py-3
-                                 text-xs font-extrabold font-headline uppercase tracking-widest
-                                 text-data-gray hover:text-action-orange transition-colors"
+                      onClick={() => onNavigate?.(part.headerTarget)}
+                      className={cn(
+                        'w-full flex items-center justify-between pl-8 pr-4 py-3',
+                        'text-xs font-extrabold font-headline uppercase tracking-widest transition-colors',
+                        isOpen ? 'text-deep-onyx' : 'text-data-gray hover:text-action-orange',
+                      )}
                     >
                       <span>{part.label}</span>
                       <motion.span
@@ -89,22 +98,30 @@ export const PresentationLayout: React.FC<PresentationLayoutProps> = ({
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.3, ease: 'easeInOut' }}
                           style={{ overflow: 'hidden' }}
+                          className="flex flex-col gap-2 pt-1 pb-2"
                         >
-                          {part.slides.map((item, index) => (
-                            <div
-                              key={item.id}
-                              onClick={() => onNavigate?.(item.number)}
-                              className={cn(
-                                "pl-8 py-2 font-body font-medium text-xs flex items-center gap-3 transition-all cursor-pointer",
-                                currentSlide === item.number
-                                  ? "text-action-orange font-bold border-l-4 border-action-orange bg-surface-container"
-                                  : "text-data-gray hover:bg-surface-container/50"
-                              )}
-                            >
-                              <span className="opacity-40 font-mono text-[0.6rem] w-4 shrink-0">
-                                {String(index + 1).padStart(2, '0')}
-                              </span>
-                              <span className="truncate">{item.label}</span>
+                          {part.sections.map((section) => (
+                            <div key={section.id}>
+                              <div className="pl-8 pr-4 py-1 font-mono text-[0.6rem] text-data-gray/70 tracking-[0.18em] uppercase">
+                                {section.label}
+                              </div>
+                              {section.slides.map((item) => (
+                                <div
+                                  key={item.id}
+                                  onClick={() => onNavigate?.(item.number)}
+                                  className={cn(
+                                    'pl-10 py-2 font-body font-medium text-xs flex items-center gap-3 transition-all cursor-pointer',
+                                    currentSlide === item.number
+                                      ? 'text-action-orange font-bold border-l-4 border-action-orange bg-surface-container'
+                                      : 'text-data-gray hover:bg-surface-container/50',
+                                  )}
+                                >
+                                  <span className="opacity-40 font-mono text-[0.6rem] w-5 shrink-0">
+                                    {String(item.number).padStart(2, '0')}
+                                  </span>
+                                  <span className="truncate">{item.label}</span>
+                                </div>
+                              ))}
                             </div>
                           ))}
                         </motion.div>
@@ -118,7 +135,7 @@ export const PresentationLayout: React.FC<PresentationLayoutProps> = ({
         )}
 
         {/* Main Canvas */}
-        <main className={cn("flex-grow relative", !showSidebar && "w-full")}>
+        <main className={cn('flex-grow relative', !showSidebar && 'w-full')}>
           {children}
         </main>
       </div>
@@ -126,7 +143,7 @@ export const PresentationLayout: React.FC<PresentationLayoutProps> = ({
       {/* Footer */}
       <footer className="fixed bottom-0 w-full flex justify-between items-center px-12 h-12 bg-surface border-t border-surface-container-high z-50">
         <div className="font-mono font-medium tracking-[0.2em] text-[0.65rem] text-data-gray uppercase">
-          Lehrkonzept
+          {partLabel}
         </div>
         <div className="flex gap-8 items-center">
           <div className="h-12 flex items-center bg-action-orange px-6 text-white font-extrabold font-headline text-[0.75rem] tracking-widest">
