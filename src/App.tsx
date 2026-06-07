@@ -230,15 +230,14 @@ const NAV = [
         slides: [
           { id: 'five-week-roadmap', label: 'Five-Week Roadmap', number: 5 },
           { id: 'self-study-architecture', label: 'Self-Study Architecture', number: 6 },
-          { id: 'technical-depth', label: 'Technical Depth', number: 7 },
         ],
       },
       {
         id: 'assessment',
         label: 'Assessment',
         slides: [
-          { id: 'assessment-concept', label: 'Assessment Concept', number: 8 },
-          { id: 'data-science-studio', label: 'Data Science Studio', number: 9 },
+          { id: 'assessment-concept', label: 'Assessment Concept', number: 7 },
+          { id: 'data-science-studio', label: 'Data Science Studio', number: 8 },
         ],
       },
     ],
@@ -246,30 +245,30 @@ const NAV = [
   {
     id: 'forschung',
     label: 'Forschungskonzept',
-    headerTarget: 11,
+    headerTarget: 10,
     sections: [
       {
         id: 'forschung-ausgangspunkt',
         label: 'Ausgangspunkt',
         slides: [
-          { id: 'xama-genealogy', label: 'Genealogie', number: 12 },
-          { id: 'xama-leitfall', label: 'Leitfall', number: 13 },
+          { id: 'xama-genealogy', label: 'Genealogie', number: 11 },
+          { id: 'xama-leitfall', label: 'Leitfall', number: 12 },
         ],
       },
       {
         id: 'forschung-programm',
         label: 'Forschungsprogramm',
         slides: [
-          { id: 'xama-pillars', label: 'Drei Säulen', number: 14 },
-          { id: 'xama-research-questions', label: 'Forschungsfragen', number: 15 },
+          { id: 'xama-pillars', label: 'Drei Säulen', number: 13 },
+          { id: 'xama-research-questions', label: 'Forschungsfragen', number: 14 },
         ],
       },
       {
         id: 'forschung-umsetzung',
         label: 'Umsetzung',
         slides: [
-          { id: 'xama-fit', label: 'Fit zur Professur', number: 16 },
-          { id: 'xama-roadmap', label: 'Erste 12 Monate', number: 17 },
+          { id: 'xama-fit', label: 'Fit zur Professur', number: 15 },
+          { id: 'xama-roadmap', label: 'Erste 12 Monate', number: 16 },
         ],
       },
     ],
