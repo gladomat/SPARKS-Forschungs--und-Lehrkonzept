@@ -29,14 +29,14 @@ export const Slide15ResearchQuestions: React.FC = () => {
 
   return (
     <SlideContent label="Forschungsprogramm" title="Technische Forschungsfragen">
-      <div className="flex flex-col gap-4 max-w-6xl mt-2">
+      <div className="flex flex-col gap-3 max-w-6xl">
         {QUESTIONS.map((q, i) => (
           <motion.div
             key={q.n}
             initial={false}
             animate={{ opacity: step >= i ? 1 : 0, y: step >= i ? 0 : 16 }}
             transition={{ duration: 0.4 }}
-            className="bg-white border border-surface-container-high rounded-lg p-5 grid grid-cols-[auto_1fr] gap-5 items-start"
+            className="bg-white border border-surface-container-high rounded-lg p-4 grid grid-cols-[auto_1fr] gap-5 items-start"
           >
             <div className="flex flex-col items-center gap-1 pt-1">
               <span className="font-mono text-sm font-bold text-action-orange tracking-widest">{q.n}</span>

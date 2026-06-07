@@ -21,11 +21,13 @@ const AngleCard: React.FC<AngleCardProps> = ({ audience, points, emphasis, visib
         : 'bg-white border border-surface-container-high rounded-lg p-6 flex flex-col gap-3'
     }
   >
-    <span className={
-      emphasis
-        ? 'font-mono text-[0.6rem] text-action-orange tracking-[0.15em] uppercase'
-        : 'font-mono text-[0.6rem] text-data-gray tracking-[0.15em] uppercase'
-    }>
+    <span
+      className={
+        emphasis
+          ? 'font-mono text-[0.6rem] text-action-orange tracking-[0.15em] uppercase'
+          : 'font-mono text-[0.6rem] text-data-gray tracking-[0.15em] uppercase'
+      }
+    >
       {audience}
     </span>
     <ul className="flex flex-col gap-2">
@@ -39,42 +41,42 @@ const AngleCard: React.FC<AngleCardProps> = ({ audience, points, emphasis, visib
   </motion.div>
 );
 
-export const Slide10WhyThisConceptWorks: React.FC = () => {
+export const Slide10WhyThisWorks: React.FC = () => {
   const step = useContext(SlideStepContext);
 
   return (
-    <SlideContent label="Closing" title="Why This Concept Works for SPARKS">
+    <SlideContent label="Closing" title="Why This Works for SPARKS Media & Data">
       <div className="max-w-5xl flex flex-col gap-6">
         <div className="grid grid-cols-3 gap-5 items-start">
           <AngleCard
             visible={step >= 0}
             audience="For students"
             points={[
-              'A clear weekly rhythm',
-              'Two paths that respect their program',
-              'One coherent campaign case across five weeks',
-              'Builds toward an integrated Studio climax',
+              'A complete applied data-science workflow on a realistic media case',
+              'One running dataset across five weeks',
+              'Predictable weekly rhythm',
+              'Adjustable technical depth',
             ]}
           />
           <AngleCard
             visible={step >= 1}
-            audience="For the SPARKS format"
+            audience="For the Media & Data programme"
             points={[
-              'Modular, avatar-compatible self-study',
-              'A strong theoretical anchor',
+              'Integrates AI, coding, analytics, predictive modelling, and performance metrics',
+              'Prepares for Practice Project and Thesis',
               'Synchronous time where it matters most',
-              'An honest answer to AI in assessment',
+              'Honest answer to AI in assessment',
             ]}
           />
           <AngleCard
             visible={step >= 2}
-            audience="For the institution"
+            audience="For the SPARKS format"
             emphasis
             points={[
-              'Graduates who read, analyze, and model data',
-              'Recognize bias and uncertainty',
-              'Communicate findings responsibly',
-              'Scientific judgment that makes communication professionals trustworthy',
+              'Modular, avatar-compatible self-study',
+              'Strong theoretical anchor',
+              'On-site Studio as assessed climax',
+              'Curricular integration across the bachelor',
             ]}
           />
         </div>
@@ -84,6 +86,15 @@ export const Slide10WhyThisConceptWorks: React.FC = () => {
           animate={{ opacity: step >= 3 ? 1 : 0, y: step >= 3 ? 0 : 12 }}
           transition={{ duration: 0.4 }}
           className="font-headline text-lg font-bold text-deep-onyx text-center"
+        >
+          Graduates who turn media data into defensible decisions.
+        </motion.p>
+
+        <motion.p
+          initial={false}
+          animate={{ opacity: step >= 4 ? 1 : 0, y: step >= 4 ? 0 : 12 }}
+          transition={{ duration: 0.4 }}
+          className="font-headline text-base text-secondary text-center"
         >
           Thank you. Questions welcome.
         </motion.p>

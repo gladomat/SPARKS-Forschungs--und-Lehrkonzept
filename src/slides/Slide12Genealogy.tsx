@@ -7,14 +7,17 @@ const NODES = [
   {
     tag: 'Kognitive Architekturen',
     text: 'Intelligentes Handeln braucht Gedächtnis — schon in Soar war Memory Voraussetzung, nicht Zusatz.',
+    citation: 'Newell, 1990, Unified Theories of Cognition',
   },
   {
     tag: 'Tulving',
     text: 'Episodisches Gedächtnis ist kein Archiv, sondern Grundlage situierten Handelns über Zeit.',
+    citation: 'Tulving, 1972, Organization of Memory',
   },
   {
     tag: 'Moderne KI-Agenten',
     text: 'Persistentes Memory speichert Präferenzen, frühere Entscheidungen, Feedback und Kontext.',
+    citation: 'Park et al., 2023, Generative Agents · Packer et al., 2023, MemGPT',
   },
   {
     tag: 'Neue Frage',
@@ -27,11 +30,11 @@ export const Slide12Genealogy: React.FC = () => {
 
   return (
     <SlideContent label="Ausgangspunkt" title="Von erklärbarer KI zu erklärbarem Agentengedächtnis">
-      <div className="grid grid-cols-[1.4fr_1fr] gap-12 max-w-6xl mt-2">
+      <div className="grid grid-cols-[1.4fr_1fr] gap-12 max-w-6xl">
         {/* Genealogy timeline */}
         <div className="relative pl-6">
           <div className="absolute left-[7px] top-2 bottom-2 w-[2px] bg-action-orange/20" />
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-3.5">
             {NODES.map((node, i) => (
               <motion.div
                 key={node.tag}
@@ -47,6 +50,11 @@ export const Slide12Genealogy: React.FC = () => {
                 <p className="font-body text-[0.95rem] text-deep-onyx leading-relaxed">
                   {node.text}
                 </p>
+                {node.citation && (
+                  <p className="font-mono text-[0.7rem] text-data-gray/70 tracking-tight mt-1">
+                    {node.citation}
+                  </p>
+                )}
               </motion.div>
             ))}
           </div>
@@ -60,7 +68,7 @@ export const Slide12Genealogy: React.FC = () => {
           className="self-center bg-white border border-surface-container-high rounded-lg p-6"
         >
           <div className="font-mono text-xs text-action-orange tracking-[0.15em] uppercase mb-3">
-            Selected prior work
+            Meine vorherige Forschung
           </div>
           <p className="font-body text-sm text-deep-onyx leading-relaxed">
             Guarnier et al., <span className="italic">„Cascaded Multimodal Deep Learning in the Differential

@@ -3,15 +3,14 @@ import { PresentationLayout } from './components/PresentationLayout';
 import { PresenterLayout } from './components/PresenterLayout';
 import { ShimmerOverlay } from './components/ShimmerOverlay';
 import { SlideTitle } from './components/SlideTitle';
-import { Slide02ModuleAtAGlance } from './slides/Slide02ModuleAtAGlance';
-import { Slide03WhatDataScienceMeansHere } from './slides/Slide03WhatDataScienceMeansHere';
-import { Slide04CompetencyClusters } from './slides/Slide04CompetencyClusters';
+import { Slide02PositionInCurriculum } from './slides/Slide02PositionInCurriculum';
+import { Slide03CoreThesis } from './slides/Slide03CoreThesis';
+import { Slide04RunningCase } from './slides/Slide04RunningCase';
 import { Slide05FiveWeekRoadmap } from './slides/Slide05FiveWeekRoadmap';
 import { Slide06SelfStudyArchitecture } from './slides/Slide06SelfStudyArchitecture';
-import { Slide07TwoLearningPaths } from './slides/Slide07TwoLearningPaths';
 import { Slide08AssessmentConcept } from './slides/Slide08AssessmentConcept';
 import { Slide09DataScienceStudio } from './slides/Slide09DataScienceStudio';
-import { Slide10WhyThisConceptWorks } from './slides/Slide10WhyThisConceptWorks';
+import { Slide10WhyThisWorks } from './slides/Slide10WhyThisWorks';
 import { Slide12Genealogy } from './slides/Slide12Genealogy';
 import { Slide13Leitfall } from './slides/Slide13Leitfall';
 import { Slide14ThreePillars } from './slides/Slide14ThreePillars';
@@ -46,8 +45,8 @@ export const SLIDES: SlideDefinition[] = [
       <SlideTitle
         label="Module Concept: Data Science"
         title="Data Science"
-        subtitle="Data Science as Scientific Judgment for Communication Professionals"
-        meta="A MIND module for the 5th semester · 6 ECTS · 5 weeks"
+        subtitle="From Media Data to Decisions — An Applied Data Science Workflow"
+        meta="MIND module · Media & Data Bachelor · 5th semester · 6 ECTS · 5 weeks"
         author="Dr. Paul-Glad Mihai, 19.06.2026, Professur Data Science – SPARKS University of Applied Sciences, Brands & Communication"
         image="/images/image-slide1.png"
         imageAlt="Data Science visualization"
@@ -55,30 +54,31 @@ export const SLIDES: SlideDefinition[] = [
     ),
   },
   {
-    id: 'module-at-a-glance',
+    id: 'position-in-curriculum',
     part: 'teaching',
     section: 'positioning',
-    presenterTitle: 'Module at a Glance',
-    component: <Slide02ModuleAtAGlance />,
-    notes: 'The official constraints. The concept is designed to fit them, not to negotiate around them.',
+    presenterTitle: 'Position in the Curriculum',
+    component: <Slide02PositionInCurriculum />,
+    steps: 4,
+    notes: 'This module is not designed in a vacuum. Students arrive with significant foundations — they have done coding, analytics, predictive modelling, and AI work. In Semester 5 they are also working through Marketing, Marketing Technologies, Performance Metrics, and Creative Media. Data Science is positioned as the methodological integration point: how do all these strands come together to support a defensible media decision? This is also the bridge to the Practice Project and Bachelor Thesis that follow. Curricular alignment: Scientific Methods provides research questions and validity; Media & Data 1–3 provides media datasets and platform logic; AI provides algorithmic systems context; Coding & Prompting provides notebooks and workflows; Data Analytics provides EDA and dashboards; Predictive Modelling provides prediction and validation; Conversion Optimization provides experiments and causal pitfalls; Marketing Technologies provides data infrastructure; Performance Metrics provides KPI logic and measurement quality.',
   },
   {
-    id: 'what-ds-means-here',
+    id: 'core-thesis',
     part: 'teaching',
     section: 'positioning',
-    presenterTitle: 'What Data Science Means Here',
-    component: <Slide03WhatDataScienceMeansHere />,
-    steps: 6,
-    notes: 'This is the central positioning. Media & Data already covers operational analytics. Information Technology covers the engineering. Data Science as a MIND module sits between them: it is the scientific reasoning layer that all three programs need. Designers need it to question the briefs they are given. Copywriters need it to evaluate the claims they make. Media strategists need it to defend their measurement choices. The running case — a real campaign dataset — anchors the module in concrete data work, not abstract critique. Students see the same dataset evolve across all five weeks: first as raw data to explore, then statistically, then through an algorithmic system. A campaign dashboard shows rising engagement: is this a real effect, a platform artifact, a targeting bias, a seasonality issue, or a vanity metric? That question is what this module trains them to answer.',
+    presenterTitle: 'Core Thesis',
+    component: <Slide03CoreThesis />,
+    steps: 4,
+    notes: 'The running case anchors the module in concrete data work across all five weeks. Students don\'t switch datasets between modules — they live with one realistic campaign dataset and build deepening competence around it. The cycle from question to recommendation is what makes this Data Science rather than data literacy. The case can be swapped each semester without rebuilding the module.',
   },
   {
-    id: 'competency-clusters',
+    id: 'running-case',
     part: 'teaching',
     section: 'positioning',
-    presenterTitle: 'Competency Clusters',
-    component: <Slide04CompetencyClusters />,
+    presenterTitle: 'Running Case & Workflow',
+    component: <Slide04RunningCase />,
     steps: 3,
-    notes: "I've regrouped the five module goals into three clusters. Cluster A is conceptual data literacy. Cluster B is statistical reading — the part most communication professionals are missing and need most. Cluster C is hands-on ML at the right scope: students do not become ML engineers, but they run a simple supervised model on the campaign dataset, evaluate it, and discuss what it can and cannot do. Each of the five weeks has five competency-oriented learning objectives in the 'students will be able to …' format, mapped onto these three clusters. Students see them from week one — they know exactly what they need to demonstrate, and when.",
+    notes: 'Students move through the full data-science cycle every week on the same running case. The pipeline — Question, Data, Cleaning, EDA, Statistics, Modelling, Evaluation, Interpretation, Recommendation — is the backbone of the module. The campaign dataset includes audience segments, creative variants, impressions/clicks/conversions, engagement metrics, channel information, and a recommendation or targeting component. It can be swapped each semester without restructuring the module.',
   },
   {
     id: 'five-week-roadmap',
@@ -87,7 +87,7 @@ export const SLIDES: SlideDefinition[] = [
     presenterTitle: 'Five-Week Roadmap',
     component: <Slide05FiveWeekRoadmap />,
     steps: 5,
-    notes: 'The same campaign dataset runs through all five weeks. Week 1: introduction and orientation. Week 2: exploratory analysis. Week 3: statistical reasoning, with doubled virtual-classroom support because statistics is where students most often need real-time clarification. Week 4 is the on-site climax — the Data Science Studio — where students do hands-on modeling, encounter bias in their own work, and defend their judgment. Week 5 closes with reflection and bias work in broader ethical context.',
+    notes: 'The weekly structure follows the logic of a real data-science project. Week 1 frames the problem and audits the data — many DS failures start before modelling, in a vague question or a wrong target variable. Week 2 is hands-on EDA, with the understanding that platform metrics already contain assumptions. Week 3 is the statistical core — when is a difference meaningful, when is causal language dangerous in media analytics. Week 4 brings simple ML workflows: train/test split, baselines, classification or clustering, model evaluation metrics, feature importance. Week 5 closes with decision communication — what the analysis supports, what it doesn\'t, how AI was used, whether the workflow is reproducible. Each week has five competency-oriented learning objectives mapped to the official module goals.',
   },
   {
     id: 'self-study-architecture',
@@ -96,16 +96,7 @@ export const SLIDES: SlideDefinition[] = [
     presenterTitle: 'Self-Study Architecture',
     component: <Slide06SelfStudyArchitecture />,
     steps: 5,
-    notes: 'The four-part loop, repeated every week, gives students a predictable rhythm. The microlearning format is compatible with the avatar production format — short, scriptable, modular units that can be updated each semester without rebuilding the course. Roughly 8 hours input, 10 hours guided practice, 4 hours reflection, 4 hours checkpoint per week. The checkpoint is mastery-oriented with repeatable feedback — continuous formative diagnostics, not pass-fail. Synchronous time is reserved for the cognitive work where having a teacher actually matters, and it is concentrated where students need it most.',
-  },
-  {
-    id: 'two-learning-paths',
-    part: 'teaching',
-    section: 'didactic-design',
-    presenterTitle: 'Two Learning Paths',
-    component: <Slide07TwoLearningPaths />,
-    steps: 3,
-    notes: 'This is the answer to the central MIND challenge at SPARKS. A communication student needs data literacy as critical reading. A media student needs it as operational competence. Forcing both into one format either bores the media students or loses the designers. Two paths, common core dataset, common evidence standards — both must demonstrate the same five qualification goals, but through different evidence. The fairness logic is explicit: same dataset, same research question, same standards of evidence quality and uncertainty communication. The tool depth differs; the cognitive standard does not.',
+    notes: 'Because 130 of 150 hours are self-study, this phase must be carefully designed. The four-part loop, repeated weekly, gives students a predictable rhythm. The microlearning format is compatible with the SPARKS avatar production format — short, scriptable, modular units that can be updated each semester without rebuilding the course. Every week produces something concrete: a data audit, an EDA notebook, a statistical brief, a model evaluation, a final data story. The synchronous time is concentrated where students need it most — statistics in Week 3 gets two surgery sessions instead of one.',
   },
   {
     id: 'assessment-concept',
@@ -114,7 +105,7 @@ export const SLIDES: SlideDefinition[] = [
     presenterTitle: 'Assessment Concept',
     component: <Slide08AssessmentConcept />,
     steps: 7,
-    notes: "A Data Science module in 2026 cannot ignore that students will use AI tools. The core principle — AI where judgment is assessed, AI restricted where competence is verified — handles this honestly. Four assessments, four formats, four different cognitive demands. The Week 2 EDA gives early diagnostic information. The Week 3 brief is the second checkpoint before the on-site phase. Week 4 on-site pitch is the Assured Lane. Week 5 portfolio is deliberately lighter — reflective synthesis, not a fourth full deliverable. The frameworks I reference are well-established: Two-Lane assessment from Sydney, the AI Assessment Scale from Perkins and colleagues.",
+    notes: 'A Data Science module in 2026 cannot ignore that students will use AI tools. The core principle — AI where judgment is assessed, AI restricted where competence is verified — handles this honestly. Four assessments, four formats, four cognitive demands. The Week 2 data audit + EDA notebook gives early diagnostic information. The Week 3 statistical brief verifies the foundation before the on-site phase. The Week 4 live defense is the assured component — students must personally explain what they did, why it is valid, and where the limits are. The Week 5 final data story closes with professional communication. AI use is allowed in digital submissions but must be documented and reflected on.',
   },
   {
     id: 'data-science-studio',
@@ -123,15 +114,15 @@ export const SLIDES: SlideDefinition[] = [
     presenterTitle: 'The Data Science Studio',
     component: <Slide09DataScienceStudio />,
     steps: 3,
-    notes: "Sixteen hours on-site is precious. I use them for what asynchronous formats and AI avatars cannot do: collaborative analysis with real-time feedback, methodological critique, and judgment discussions that only work face-to-face. The two days share one case and one narrative — explore the data, build something simple, probe its weaknesses, critique it methodologically, then translate the analysis for a non-technical audience. That final pitch is not decorative. For a communication audience, the ability to explain a data-driven decision honestly to clients and creative colleagues — including what the data and the model cannot do — is the core deliverable of this module.",
+    notes: 'Sixteen hours on-site is precious. I use them for what asynchronous formats and AI avatars cannot do: collaborative model evaluation with real-time methodological critique, peer review, and judgment discussions that only work face-to-face. By Week 4, students have framed the problem, explored the data, and worked through statistical reasoning — the on-site phase is where they integrate everything into a defended workflow. The live defense at the end is the assured assessment: students must explain their own work, including its limits, under questioning from a non-technical audience.',
   },
   {
-    id: 'why-this-concept-works',
+    id: 'why-this-works',
     part: 'teaching',
-    presenterTitle: 'Why This Concept Works',
-    component: <Slide10WhyThisConceptWorks />,
-    steps: 4,
-    notes: "The concept rests on four design choices. First, Data Science framed as scientific judgment for communication, anchored in a concrete campaign case students work with all five weeks. Second, a four-part weekly self-study loop compatible with the SPARKS avatar production format, with synchronous support where students need it most. Third, two learning paths that take the heterogeneous audience seriously. Fourth, a Two-Lane assessment model that handles AI honestly, with the on-site Studio as the assessed climax. The goal is graduates who can use data without becoming naïve about it — and communicate evidence without overstating it.",
+    presenterTitle: 'Why This Works',
+    component: <Slide10WhyThisWorks />,
+    steps: 5,
+    notes: 'To close: this concept is designed specifically for the Media & Data Bachelor. It is data-science-heavy enough to match the curriculum — students do the full workflow from question through modelling to recommendation — but it remains anchored in media and marketing practice. The on-site Studio is the assessed climax. The two-lane assessment handles AI honestly. The curricular integration is explicit. Students leave able to defend evidence-based recommendations under uncertainty — the competence they need for the Practice Project, the Bachelor Thesis, and professional work in media analytics, planning, and digital marketing.',
   },
   {
     id: 'xama-title',
@@ -228,9 +219,9 @@ const NAV = [
         id: 'positioning',
         label: 'Positioning',
         slides: [
-          { id: 'module-at-a-glance', label: 'Module at a Glance', number: 2 },
-          { id: 'what-ds-means-here', label: 'What DS Means Here', number: 3 },
-          { id: 'competency-clusters', label: 'Competency Clusters', number: 4 },
+          { id: 'position-in-curriculum', label: 'Curriculum Position', number: 2 },
+          { id: 'core-thesis', label: 'Core Thesis', number: 3 },
+          { id: 'running-case', label: 'Running Case & Workflow', number: 4 },
         ],
       },
       {
@@ -239,7 +230,7 @@ const NAV = [
         slides: [
           { id: 'five-week-roadmap', label: 'Five-Week Roadmap', number: 5 },
           { id: 'self-study-architecture', label: 'Self-Study Architecture', number: 6 },
-          { id: 'two-learning-paths', label: 'Two Learning Paths', number: 7 },
+          { id: 'technical-depth', label: 'Technical Depth', number: 7 },
         ],
       },
       {

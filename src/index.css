@@ -37,6 +37,10 @@
 }
 
 @layer base {
+  html {
+    font-size: 109%;
+  }
+
   body {
     @apply bg-background text-on-surface font-body;
     margin: 0;

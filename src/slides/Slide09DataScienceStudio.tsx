@@ -55,7 +55,7 @@ const DayCard: React.FC<DayCardProps> = ({ day, title, rows, visible }) => (
   </motion.div>
 );
 
-const ARC = ['Explore', 'Model', 'Critique', 'Translate'];
+const ARC = ['Analyze', 'Model', 'Critique', 'Defend'];
 
 export const Slide09DataScienceStudio: React.FC = () => {
   const step = useContext(SlideStepContext);
@@ -67,21 +67,21 @@ export const Slide09DataScienceStudio: React.FC = () => {
           <DayCard
             visible={step >= 0}
             day="Day 1 · On-site"
-            title="Explore & Probe"
+            title="Analyze, Model, Evaluate"
             rows={[
-              { time: 'Morning', text: 'Deep analytical and statistical work on the campaign dataset' },
-              { time: 'Afternoon', text: 'Teams build a simple model — targeting or recommendation — and probe its outputs' },
-              { time: 'Closing', text: 'Each team documents one concrete failure mode they identified' },
+              { time: 'Morning', text: 'Dataset walkthrough; data quality and feature discussion; baseline model logic' },
+              { time: 'Afternoon', text: 'Team-based model evaluation, metric choice, error analysis' },
+              { time: 'Closing', text: 'Each team documents one concrete failure mode or bias risk' },
             ]}
           />
           <DayCard
             visible={step >= 1}
             day="Day 2 · On-site"
-            title="Critique & Translate"
+            title="Defend, Critique, Translate"
             rows={[
-              { time: 'Morning', text: 'Peer review across teams; methodological critique using bias frameworks' },
-              { time: 'Midday', text: 'Discussion — what does "good evidence" mean in a creative or media decision?' },
-              { time: 'Afternoon', text: 'Team pitches to a non-technical audience — analysis, limits, recommendation', assured: true },
+              { time: 'Morning', text: 'Peer review across teams; methodological critique' },
+              { time: 'Midday', text: 'Discussion — when is a model good enough to inform a media decision?' },
+              { time: 'Afternoon', text: 'Live defense to a non-technical audience — recommendation, uncertainty, limitations', assured: true },
             ]}
           />
         </div>

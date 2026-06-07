@@ -33,7 +33,7 @@ export const Slide14ThreePillars: React.FC = () => {
 
   return (
     <SlideContent label="Forschungsprogramm" title="XAMA: Drei Säulen für accountable Agent Memory">
-      <div className="grid grid-cols-3 gap-6 max-w-6xl mt-2">
+      <div className="grid grid-cols-3 gap-5 max-w-6xl">
         {PILLARS.map((p, i) => {
           const Icon = p.icon;
           return (
@@ -42,7 +42,7 @@ export const Slide14ThreePillars: React.FC = () => {
               initial={false}
               animate={{ opacity: step >= i ? 1 : 0, y: step >= i ? 0 : 20 }}
               transition={{ duration: 0.4 }}
-              className="bg-white border border-surface-container-high rounded-lg p-6 flex flex-col gap-4"
+              className="bg-white border border-surface-container-high rounded-lg p-5 flex flex-col gap-3"
             >
               <div className="flex items-center gap-3">
                 <span className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-deep-onyx text-white font-headline text-sm font-bold">
@@ -73,7 +73,7 @@ export const Slide14ThreePillars: React.FC = () => {
         initial={false}
         animate={{ opacity: step >= 3 ? 1 : 0, y: step >= 3 ? 0 : 12 }}
         transition={{ duration: 0.4 }}
-        className="mt-8 max-w-6xl flex items-center gap-3"
+        className="mt-6 max-w-6xl flex items-center gap-3"
       >
         <span className="font-mono text-xs text-action-orange tracking-[0.15em] uppercase">Leitbegriff</span>
         <span className="font-headline text-lg font-bold text-deep-onyx">

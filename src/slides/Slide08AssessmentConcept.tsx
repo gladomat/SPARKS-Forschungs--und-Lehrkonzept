@@ -89,7 +89,7 @@ export const Slide08AssessmentConcept: React.FC = () => {
             visible={step >= 1}
             mode="Lane 1 · in-person, no AI"
             name="Assured"
-            detail="On-site pitch at the end of Week 4. Live, unaided."
+            detail="Live defense at the end of Week 4. In-person, unaided."
             assured
           />
           <LaneCard
@@ -101,10 +101,10 @@ export const Slide08AssessmentConcept: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-4 gap-4">
-          <RecordCard visible={step >= 3} week="End of W2" format="EDA evidence memo" />
+          <RecordCard visible={step >= 3} week="End of W2" format="Data audit + EDA notebook" />
           <RecordCard visible={step >= 4} week="End of W3" format="Statistical reasoning brief" />
-          <RecordCard visible={step >= 5} week="End of W4" format="On-site pitch — defend an analysis" assured />
-          <RecordCard visible={step >= 6} week="End of W5" format="Reflection portfolio" />
+          <RecordCard visible={step >= 5} week="End of W4" format="Live defense (on-site)" assured />
+          <RecordCard visible={step >= 6} week="End of W5" format="Final data story / decision memo" />
         </div>
       </div>
     </SlideContent>
