@@ -73,8 +73,7 @@ export const Slide03CoreThesis: React.FC = () => {
               className="font-body text-sm text-secondary leading-relaxed"
             >
               The professional target is media/data professionals who can run an applied workflow,
-              evaluate uncertainty and bias, and translate findings into defensible recommendations —
-              not ML engineers.
+              evaluate uncertainty and bias, and translate findings into defensible recommendations.
             </motion.p>
           )}
         </AnimatePresence>

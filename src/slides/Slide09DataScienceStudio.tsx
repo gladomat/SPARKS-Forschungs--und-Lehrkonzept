@@ -61,7 +61,7 @@ export const Slide09DataScienceStudio: React.FC = () => {
   const step = useContext(SlideStepContext);
 
   return (
-    <SlideContent label="Assessment" title="The Data Science Studio">
+    <SlideContent label="Didactic Design" title="The Data Science Studio — On-Site Days">
       <div className="max-w-4xl flex flex-col gap-5">
         <div className="grid grid-cols-2 gap-5">
           <DayCard
@@ -81,7 +81,7 @@ export const Slide09DataScienceStudio: React.FC = () => {
             rows={[
               { time: 'Morning', text: 'Peer review across teams; methodological critique' },
               { time: 'Midday', text: 'Discussion — when is a model good enough to inform a media decision?' },
-              { time: 'Afternoon', text: 'Live defense to a non-technical audience — recommendation, uncertainty, limitations', assured: true },
+              { time: 'Afternoon', text: 'Defended recommendation to a non-technical audience.' },
             ]}
           />
         </div>

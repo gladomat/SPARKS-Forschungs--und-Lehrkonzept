@@ -47,7 +47,7 @@ export const Slide10WhyThisWorks: React.FC = () => {
   return (
     <SlideContent label="Closing" title="Why This Works for SPARKS Media & Data">
       <div className="max-w-5xl flex flex-col gap-6">
-        <div className="grid grid-cols-3 gap-5 items-start">
+        <div className="grid grid-cols-3 gap-5 items-stretch">
           <AngleCard
             visible={step >= 0}
             audience="For students"
@@ -75,7 +75,7 @@ export const Slide10WhyThisWorks: React.FC = () => {
             points={[
               'Modular, avatar-compatible self-study',
               'Strong theoretical anchor',
-              'On-site Studio as assessed climax',
+              'On-site Studio as didactic climax',
               'Curricular integration across the bachelor',
             ]}
           />
@@ -90,14 +90,7 @@ export const Slide10WhyThisWorks: React.FC = () => {
           Graduates who turn media data into defensible decisions.
         </motion.p>
 
-        <motion.p
-          initial={false}
-          animate={{ opacity: step >= 4 ? 1 : 0, y: step >= 4 ? 0 : 12 }}
-          transition={{ duration: 0.4 }}
-          className="font-headline text-base text-secondary text-center"
-        >
-          Thank you. Questions welcome.
-        </motion.p>
+      
       </div>
     </SlideContent>
   );

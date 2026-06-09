@@ -100,12 +100,66 @@ export const Slide08AssessmentConcept: React.FC = () => {
           />
         </div>
 
+        <motion.div
+          initial={false}
+          animate={{ opacity: step >= 1 ? 1 : 0 }}
+          transition={{ duration: 0.4 }}
+          className="font-body italic text-xs text-data-gray leading-snug -mt-2"
+        >
+          Lanes after Fawns et al. (2025), Assessment &amp; Evaluation in Higher Education.
+        </motion.div>
+
         <div className="grid grid-cols-4 gap-4">
           <RecordCard visible={step >= 3} week="End of W2" format="Data audit + EDA notebook" />
           <RecordCard visible={step >= 4} week="End of W3" format="Statistical reasoning brief" />
           <RecordCard visible={step >= 5} week="End of W4" format="Live defense (on-site)" assured />
           <RecordCard visible={step >= 6} week="End of W5" format="Final data story / decision memo" />
         </div>
+
+        <motion.div
+          initial={false}
+          animate={{ opacity: step >= 7 ? 1 : 0, y: step >= 7 ? 0 : 12 }}
+          transition={{ duration: 0.4 }}
+          className="border-2 border-action-orange bg-action-orange/[0.04] rounded-lg p-5 flex flex-col gap-4"
+        >
+          <span className="font-headline text-base font-bold text-deep-onyx">
+            Methodological judgment, live.
+          </span>
+          <div className="grid grid-cols-4 gap-4">
+            <div className="flex flex-col gap-1">
+              <span className="font-mono text-[0.55rem] text-action-orange tracking-[0.15em] uppercase">
+                Format
+              </span>
+              <span className="font-body text-xs text-deep-onyx leading-snug">
+                Team presentation, individual Q&amp;A
+              </span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="font-mono text-[0.55rem] text-action-orange tracking-[0.15em] uppercase">
+                Audience
+              </span>
+              <span className="font-body text-xs text-deep-onyx leading-snug">
+                Non-technical (planner, faculty)
+              </span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="font-mono text-[0.55rem] text-action-orange tracking-[0.15em] uppercase">
+                Conditions
+              </span>
+              <span className="font-body text-xs text-deep-onyx leading-snug">
+                In-person, unaided
+              </span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="font-mono text-[0.55rem] text-action-orange tracking-[0.15em] uppercase">
+                What&rsquo;s certified
+              </span>
+              <span className="font-body text-xs text-deep-onyx leading-snug">
+                Judgment, ownership of limits
+              </span>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </SlideContent>
   );
