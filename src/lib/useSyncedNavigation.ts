@@ -14,6 +14,10 @@ export interface NavState {
 export interface SlideMeta {
   section?: string;
   steps?: number;
+  /** Hidden slides are reachable only via explicit navigation (e.g. a button), never via arrow keys. */
+  hidden?: boolean;
+  /** Index of the slide arrow keys return to when leaving a hidden slide. */
+  parent?: number;
 }
 
 const CHANNEL_NAME = 'sparks-presentation';
@@ -111,17 +115,27 @@ export function useSyncedNavigation(slides: SlideMeta[]) {
   // Keyboard: arrows step through sub-steps first, then move between slides.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      const maxStep = (slides[state.index]?.steps ?? 1) - 1;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      const isForward = e.key === 'ArrowRight' || e.key === 'ArrowDown';
+      const isBackward = e.key === 'ArrowLeft' || e.key === 'ArrowUp';
+      if (!isForward && !isBackward) return;
+
+      const current = slides[state.index];
+      if (current?.hidden) {
+        navigateTo(current.parent ?? 0, 'keys');
+        return;
+      }
+
+      const maxStep = (current?.steps ?? 1) - 1;
+      if (isForward) {
         if (state.step < maxStep) {
           setState((s) => ({ ...s, step: s.step + 1 }));
-        } else {
+        } else if (!slides[state.index + 1]?.hidden) {
           navigateTo(state.index + 1, 'keys');
         }
-      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      } else {
         if (state.step > 0) {
           setState((s) => ({ ...s, step: s.step - 1 }));
-        } else {
+        } else if (!slides[state.index - 1]?.hidden) {
           navigateTo(state.index - 1, 'keys');
         }
       }

@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useCallback } from 'react';
 import { PresentationLayout } from './components/PresentationLayout';
 import { PresenterLayout } from './components/PresenterLayout';
 import { ShimmerOverlay } from './components/ShimmerOverlay';
@@ -6,8 +6,10 @@ import { SlideTitle } from './components/SlideTitle';
 import { Slide02PositionInCurriculum } from './slides/Slide02PositionInCurriculum';
 import { Slide03CoreThesis } from './slides/Slide03CoreThesis';
 import { Slide04RunningCase } from './slides/Slide04RunningCase';
+import { Slide04DetailMethods } from './slides/Slide04DetailMethods';
 import { Slide05FiveWeekRoadmap } from './slides/Slide05FiveWeekRoadmap';
 import { Slide06SelfStudyArchitecture } from './slides/Slide06SelfStudyArchitecture';
+import { Slide07TwoLearningPaths } from './slides/Slide07TwoLearningPaths';
 import { Slide08AssessmentConcept } from './slides/Slide08AssessmentConcept';
 import { Slide09DataScienceStudio } from './slides/Slide09DataScienceStudio';
 import { Slide10WhyThisWorks } from './slides/Slide10WhyThisWorks';
@@ -25,6 +27,7 @@ import { useSyncedNavigation, getTransitionVariants } from './lib/useSyncedNavig
 /* ------------------------------------------------------------------ */
 
 export const SlideStepContext = createContext(Infinity);
+export const SlideNavContext = createContext<(id: string) => void>(() => {});
 
 interface SlideDefinition {
   id: string;
@@ -34,6 +37,10 @@ interface SlideDefinition {
   notes?: string;
   steps?: number;
   presenterTitle: string;
+  /** Reachable only via an explicit button, not via arrow keys or the sidebar. */
+  hidden?: boolean;
+  /** Index of the slide this hidden slide belongs to (used for sidebar highlight + arrow-key return). */
+  parent?: number;
 }
 
 export const SLIDES: SlideDefinition[] = [
@@ -46,7 +53,7 @@ export const SLIDES: SlideDefinition[] = [
         label="Module Concept: Data Science"
         title="Data Science"
         subtitle="From Media Data to Decisions — An Applied Data Science Workflow"
-        meta="MIND module · Media & Data Bachelor · 5th semester · 6 ECTS · 5 weeks"
+        meta="MIND module · Copy & Story · Media & Data · Design & Arts · 5th semester · 6 ECTS · 5 weeks"
         author="Dr. Paul-Glad Mihai, 19.06.2026, Professur Data Science – SPARKS University of Applied Sciences, Brands & Communication"
         image="/images/image-slide1.png"
         imageAlt="Data Science visualization"
@@ -60,7 +67,7 @@ export const SLIDES: SlideDefinition[] = [
     presenterTitle: 'Position in the Curriculum',
     component: <Slide02PositionInCurriculum />,
     steps: 4,
-    notes: 'This module is not designed in a vacuum. Students arrive with significant foundations — they have done coding, analytics, predictive modelling, and AI work. In Semester 5 they are also working through Marketing, Marketing Technologies, Performance Metrics, and Creative Media. Data Science is positioned as the methodological integration point: how do all these strands come together to support a defensible media decision? This is also the bridge to the Practice Project and Bachelor Thesis that follow. Curricular alignment: Scientific Methods provides research questions and validity; Media & Data 1–3 provides media datasets and platform logic; AI provides algorithmic systems context; Coding & Prompting provides notebooks and workflows; Data Analytics provides EDA and dashboards; Predictive Modelling provides prediction and validation; Conversion Optimization provides experiments and causal pitfalls; Marketing Technologies provides data infrastructure; Performance Metrics provides KPI logic and measurement quality.',
+    notes: 'Data Science is a MIND module taken by all three Bachelor programmes in Semester 5 — Copy & Story, Media & Data, and Design & Arts. They do not arrive empty-handed and they do not arrive identical. Every student shares a foundation: Scientific Methods for research questions and validity, Artificial Intelligence for algorithmic systems context, Coding & Prompting for notebooks and computational literacy, and Marketing Technologies for the data infrastructure of the field. What differs is the craft each programme brings — Copy & Story brings narrative and editorial judgment, Media & Data brings the analytics stack (Data Analytics, Predictive Modelling, Performance Metrics), Design & Arts brings visual and spatial thinking. Data Science is the convergence point: the shared spine plus each programme\'s craft integrate into one defensible, data-driven decision. This is also the bridge to the Practice Project and Bachelor Thesis that follow in Semesters 6 and 7. The point to land: this is not a Media & Data module that others happen to sit in — it is genuinely cross-programme, and the Two Learning Paths slide in the didactic design shows how we calibrate tool depth so a copywriter and a data analyst both succeed.',
   },
   {
     id: 'core-thesis',
@@ -68,8 +75,8 @@ export const SLIDES: SlideDefinition[] = [
     section: 'positioning',
     presenterTitle: 'Core Thesis',
     component: <Slide03CoreThesis />,
-    steps: 4,
-    notes: 'The running case anchors the module in concrete data work across all five weeks. Students don\'t switch datasets between modules — they live with one realistic campaign dataset and build deepening competence around it. The cycle from question to recommendation is what makes this Data Science rather than data literacy. The case can be swapped each semester without rebuilding the module.',
+    steps: 5,
+    notes: 'This is the thesis the whole module hangs on: Data Science is the workflow that turns media data into defensible decisions — not data literacy, not tool training, but the disciplined path from a question to a recommendation you can stand behind. By semester five every student already shares a foundation in AI and Coding & Prompting, and each programme brings its own craft on top — analytics, copy, or design. Data Science is where those strands integrate into one applied workflow. The driving question keeps the module honest: which media or marketing decision is actually justified by this data — and, just as important, which is not. The graduate we are aiming for is a communication professional, across data, copy, and design, who can run the workflow, weigh uncertainty and bias, and translate findings into a recommendation they can defend.',
   },
   {
     id: 'running-case',
@@ -79,6 +86,15 @@ export const SLIDES: SlideDefinition[] = [
     component: <Slide04RunningCase />,
     steps: 3,
     notes: 'Students move through the full data-science cycle every week on the same running case. The pipeline — Question, Data, Cleaning, EDA, Statistics, Modelling, Evaluation, Interpretation, Recommendation — is the backbone of the module. The campaign dataset includes audience segments, creative variants, impressions/clicks/conversions, engagement metrics, channel information, and a recommendation or targeting component. It can be swapped each semester without restructuring the module.',
+  },
+  {
+    id: 'two-learning-paths',
+    part: 'teaching',
+    section: 'didactic-design',
+    presenterTitle: 'Two Learning Paths',
+    component: <Slide07TwoLearningPaths />,
+    steps: 3,
+    notes: 'Here is how a copywriter and a data analyst both succeed in the same module. Because the cohort is genuinely mixed, the module runs two learning paths over one shared backbone. The Communication & Design path — Copy & Story and Design & Arts — works low-code and browser-based, AI-assisted, and focuses on interpreting, critiquing, visualizing, and explaining the evidence. The Media & Performance path — Media & Data and anyone quantitatively inclined — works in notebooks and the Python ecosystem and goes deeper: reproduce, extend, model, validate. Crucially, the paths are not two different courses. Same dataset, same research question, same evidence standards, same competencies — different tool depth, identical cognitive standard. A student is assessed on the quality of their reasoning and the defensibility of their decision, not on how much code they wrote. This is what makes a Data Science module honest for students who have never programmed.',
   },
   {
     id: 'five-week-roadmap',
@@ -122,7 +138,7 @@ export const SLIDES: SlideDefinition[] = [
     presenterTitle: 'Why This Works',
     component: <Slide10WhyThisWorks />,
     steps: 5,
-    notes: 'To close: this concept is designed specifically for the Media & Data Bachelor. It is data-science-heavy enough to match the curriculum — students do the full workflow from question through modelling to recommendation — but it remains anchored in media and marketing practice. The on-site Studio is the assessed climax. The two-lane assessment handles AI honestly. The curricular integration is explicit. Students leave able to defend evidence-based recommendations under uncertainty — the competence they need for the Practice Project, the Bachelor Thesis, and professional work in media analytics, planning, and digital marketing.',
+    notes: 'To close: this concept is designed for all three Bachelor programmes that meet in this MIND module — Copy & Story, Media & Data, and Design & Arts. It is data-science-heavy enough to match the curriculum — students do the full workflow from question through analysis to recommendation — but it stays anchored in media and communication practice, and the two learning paths let a copywriter and a data analyst succeed on the same cognitive standard. The on-site Studio is the didactic climax. The two-lane assessment handles AI honestly. The curricular integration across the bachelor is explicit. Students leave able to defend evidence-based recommendations under uncertainty — the competence they need for the Practice Project, the Bachelor Thesis, and professional work in media, communication, and digital marketing.',
   },
   {
     id: 'xama-title',
@@ -203,6 +219,17 @@ export const SLIDES: SlideDefinition[] = [
     notes:
       'In den ersten zwölf Monaten in vier Schritten. Monat 1–3: den Leitfall präzisieren — welche Daten, was wird gespeichert, wann abgerufen, wo entstehen Accountability-Risiken; Baseline wählen, Praxispartner identifizieren. Monat 4–6: ein Prototyp für Explainable Memory Retrieval, der dokumentiert, welche gespeicherten Erfahrungen an einer Empfehlung beteiligt waren. Monat 7–9: XAMA-Bench v0.1 mit Metriken für Faithfulness, Logging und Erklärungsstabilität — gut in studentische Projekt- und Abschlussarbeiten integrierbar. Monat 10–12: Transfer und Publikation — Workshop-Paper, Drittmittel-Skizze, Integration in die Lehre. Schlussbotschaft: XAMA macht sichtbar, wie Data-Analytics-Agenten erinnern — und wie diese Erinnerungen erklärbar, auditierbar und verantwortbar werden. (Umsetzungsreif wirken, nicht überambitioniert.)',
   },
+  {
+    id: 'methods-detail',
+    part: 'teaching',
+    section: 'positioning',
+    hidden: true,
+    parent: 3, // running-case
+    presenterTitle: 'Detail: Methods & Models',
+    component: <Slide04DetailMethods />,
+    notes:
+      'Backup slide — only if asked "which models specifically do you teach?". Three blocks, oriented on the standard intro-DS canon. Week 3 statistics: descriptive stats and distributions, correlation vs. confounding, hypothesis testing / A/B tests, confidence intervals and effect size. Week 4 ML: supervised — linear and logistic regression, decision trees and random forests (deliberately interpretable models with feature importance, not black boxes); unsupervised — k-means for audience segmentation, PCA for dimensionality reduction. Evaluation: train/test split, baselines, confusion matrix, precision/recall, ROC/AUC, overfitting. Tools differ per learning path: Python/pandas/scikit-learn/Jupyter for Media & Performance, browser-based low-code for Communication & Design. Deep learning, transfer learning, reinforcement learning are named and contextualized but not trained hands-on — honest scope for a 5-week intro module with a mixed cohort.',
+  },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -228,16 +255,17 @@ const NAV = [
         id: 'didactic-design',
         label: 'Didactic Design',
         slides: [
-          { id: 'five-week-roadmap', label: 'Five-Week Roadmap', number: 5 },
-          { id: 'self-study-architecture', label: 'Self-Study Architecture', number: 6 },
-          { id: 'data-science-studio', label: 'Data Science Studio', number: 7 },
+          { id: 'two-learning-paths', label: 'Two Learning Paths', number: 5 },
+          { id: 'five-week-roadmap', label: 'Five-Week Roadmap', number: 6 },
+          { id: 'self-study-architecture', label: 'Self-Study Architecture', number: 7 },
+          { id: 'data-science-studio', label: 'Data Science Studio', number: 8 },
         ],
       },
       {
         id: 'assessment',
         label: 'Assessment',
         slides: [
-          { id: 'assessment-concept', label: 'Assessment Concept', number: 8 },
+          { id: 'assessment-concept', label: 'Assessment Concept', number: 9 },
         ],
       },
     ],
@@ -245,30 +273,30 @@ const NAV = [
   {
     id: 'forschung',
     label: 'Forschungskonzept',
-    headerTarget: 10,
+    headerTarget: 11,
     sections: [
       {
         id: 'forschung-ausgangspunkt',
         label: 'Ausgangspunkt',
         slides: [
-          { id: 'xama-genealogy', label: 'Genealogie', number: 11 },
-          { id: 'xama-leitfall', label: 'Leitfall', number: 12 },
+          { id: 'xama-genealogy', label: 'Genealogie', number: 12 },
+          { id: 'xama-leitfall', label: 'Leitfall', number: 13 },
         ],
       },
       {
         id: 'forschung-programm',
         label: 'Forschungsprogramm',
         slides: [
-          { id: 'xama-pillars', label: 'Drei Säulen', number: 13 },
-          { id: 'xama-research-questions', label: 'Forschungsfragen', number: 14 },
+          { id: 'xama-pillars', label: 'Drei Säulen', number: 14 },
+          { id: 'xama-research-questions', label: 'Forschungsfragen', number: 15 },
         ],
       },
       {
         id: 'forschung-umsetzung',
         label: 'Umsetzung',
         slides: [
-          { id: 'xama-fit', label: 'Fit zur Professur', number: 15 },
-          { id: 'xama-roadmap', label: 'Erste 12 Monate', number: 16 },
+          { id: 'xama-fit', label: 'Fit zur Professur', number: 16 },
+          { id: 'xama-roadmap', label: 'Erste 12 Monate', number: 17 },
         ],
       },
     ],
@@ -287,6 +315,14 @@ const PART_LABELS: Record<string, string> = {
 export default function App() {
   const { state, navigateTo } = useSyncedNavigation(SLIDES);
   const { index: currentIndex, step: currentStep } = state;
+
+  const goToSlide = useCallback(
+    (id: string) => {
+      const i = SLIDES.findIndex((s) => s.id === id);
+      if (i !== -1) navigateTo(i, 'keys');
+    },
+    [navigateTo],
+  );
 
   const isPrint = window.location.search.includes('print');
   const showNotes = window.location.search.includes('notes');
@@ -340,31 +376,40 @@ export default function App() {
   }
 
   /* Interactive mode */
+  // Hidden slides report their parent's number so the sidebar keeps the
+  // parent highlighted and its section open for navigating back.
+  const displayedNumber =
+    currentSlide.hidden && currentSlide.parent !== undefined
+      ? currentSlide.parent + 1
+      : currentIndex + 1;
+
   return (
-    <PresentationLayout
-      currentSlide={currentIndex + 1}
-      totalSlides={SLIDES.length}
-      showSidebar={showSidebar}
-      onNavigate={(num) => navigateTo(num - 1, 'sidebar')}
-      parts={NAV}
-      partLabel={PART_LABELS[currentSlide.part]}
-    >
-      <ShimmerOverlay trigger={state.shimmerTrigger} />
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentSlide.id}
-          data-shimmer-slide
-          initial={variants.initial}
-          animate={variants.animate}
-          exit={variants.exit}
-          transition={{ duration: state.transitionType === 'shimmer' ? 0.7 : 0.3, ease: 'easeInOut' }}
-          className="w-full h-full"
-        >
-          <SlideStepContext.Provider value={currentStep}>
-            {currentSlide.component}
-          </SlideStepContext.Provider>
-        </motion.div>
-      </AnimatePresence>
-    </PresentationLayout>
+    <SlideNavContext.Provider value={goToSlide}>
+      <PresentationLayout
+        currentSlide={displayedNumber}
+        totalSlides={SLIDES.length}
+        showSidebar={showSidebar}
+        onNavigate={(num) => navigateTo(num - 1, 'sidebar')}
+        parts={NAV}
+        partLabel={PART_LABELS[currentSlide.part]}
+      >
+        <ShimmerOverlay trigger={state.shimmerTrigger} />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide.id}
+            data-shimmer-slide
+            initial={variants.initial}
+            animate={variants.animate}
+            exit={variants.exit}
+            transition={{ duration: state.transitionType === 'shimmer' ? 0.7 : 0.3, ease: 'easeInOut' }}
+            className="w-full h-full"
+          >
+            <SlideStepContext.Provider value={currentStep}>
+              {currentSlide.component}
+            </SlideStepContext.Provider>
+          </motion.div>
+        </AnimatePresence>
+      </PresentationLayout>
+    </SlideNavContext.Provider>
   );
 }

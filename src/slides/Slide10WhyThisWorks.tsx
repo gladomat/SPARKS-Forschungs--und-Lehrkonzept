@@ -45,7 +45,7 @@ export const Slide10WhyThisWorks: React.FC = () => {
   const step = useContext(SlideStepContext);
 
   return (
-    <SlideContent label="Closing" title="Why This Works for SPARKS Media & Data">
+    <SlideContent label="Closing" title="Why This Works for SPARKS">
       <div className="max-w-5xl flex flex-col gap-6">
         <div className="grid grid-cols-3 gap-5 items-stretch">
           <AngleCard
@@ -60,11 +60,11 @@ export const Slide10WhyThisWorks: React.FC = () => {
           />
           <AngleCard
             visible={step >= 1}
-            audience="For the Media & Data programme"
+            audience="For all three programmes"
             points={[
-              'Integrates AI, coding, analytics, predictive modelling, and performance metrics',
-              'Prepares for Practice Project and Thesis',
-              'Synchronous time where it matters most',
+              'Builds on the shared spine — Scientific Methods, AI, Coding & Prompting',
+              'Two paths: one cognitive standard, calibrated tool depth',
+              'Prepares every student for Practice Project and Thesis',
               'Honest answer to AI in assessment',
             ]}
           />

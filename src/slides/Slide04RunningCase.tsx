@@ -1,7 +1,7 @@
 import React, { useContext, useLayoutEffect, useRef, useState } from 'react';
 import { SlideContent } from '../components/SlideContent';
 import { motion } from 'motion/react';
-import { SlideStepContext } from '../App';
+import { SlideStepContext, SlideNavContext } from '../App';
 import {
   Search,
   Database,
@@ -13,6 +13,7 @@ import {
   Lightbulb,
   Megaphone,
   TrendingUp,
+  ArrowRight,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -69,6 +70,7 @@ type ArrowPath = { d: string };
 
 export const Slide04RunningCase: React.FC = () => {
   const step = useContext(SlideStepContext);
+  const goToSlide = useContext(SlideNavContext);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const rowEndRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -219,6 +221,18 @@ export const Slide04RunningCase: React.FC = () => {
             </span>
           </motion.div>
         </div>
+
+        {/* Discreet jump to the hidden methods detail slide */}
+        <motion.button
+          initial={false}
+          animate={{ opacity: step >= 2 ? 1 : 0 }}
+          transition={{ duration: 0.4 }}
+          onClick={() => goToSlide('methods-detail')}
+          className="self-end flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.15em] uppercase text-data-gray hover:text-action-orange transition-colors cursor-pointer"
+        >
+          Detail: Methods & Models
+          <ArrowRight className="w-3 h-3" />
+        </motion.button>
       </div>
     </SlideContent>
   );

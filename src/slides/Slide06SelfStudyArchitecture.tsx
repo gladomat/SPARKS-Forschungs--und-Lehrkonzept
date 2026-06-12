@@ -49,8 +49,8 @@ export const Slide06SelfStudyArchitecture: React.FC = () => {
           <LoopCard
             visible={step >= 1}
             label="02 · Guided Practice"
-            title="Hands-on Notebooks"
-            detail="Work with the running case in notebooks"
+            title="Hands-on Practice"
+            detail="Work the running case in notebooks or low-code tools"
             icon={Wrench}
           />
           <LoopCard
