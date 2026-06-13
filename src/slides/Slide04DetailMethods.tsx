@@ -135,9 +135,9 @@ export const Slide04DetailMethods: React.FC = () => {
                 Toolchain — per learning path
               </span>
               <span className="font-body text-xs text-deep-onyx leading-relaxed">
-                <span className="font-bold">Media & Performance:</span> Python · pandas ·
+                <span className="font-bold">Media & Data:</span> Python · pandas ·
                 scikit-learn · Jupyter.{' '}
-                <span className="font-bold">Communication & Design:</span> browser-based,
+                <span className="font-bold">Copy & Story / Design & Arts:</span> browser-based,
                 low-code, AI-assisted — same data, same evidence standards.
               </span>
             </div>

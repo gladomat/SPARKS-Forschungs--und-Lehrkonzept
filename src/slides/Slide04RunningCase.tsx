@@ -215,9 +215,9 @@ export const Slide04RunningCase: React.FC = () => {
               <TrendingUp className="w-5 h-5" />
             </div>
             <span className="font-body text-base text-deep-onyx leading-relaxed">
-              Students move through the full cycle,{' '}
-              <span className="font-bold">every week, on one running case</span> — building deepening
-              competence across all five weeks.
+              Students move through the{' '}
+              <span className="font-bold">full cycle over the five weeks, on one running case</span>{' '}
+              — each week deepens one stage of the pipeline, from question to recommendation.
             </span>
           </motion.div>
         </div>
