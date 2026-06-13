@@ -71,7 +71,7 @@ export const SLIDES: SlideDefinition[] = [
     component: <Slide12Genealogy />,
     steps: 5,
     notes:
-      'Meine Forschung liegt an der Schnittstelle von angewandter KI, heterogenen Daten und Erklärbarkeit — etwa die multimodale Demenz-Forschungsarbeit, die sichtbar macht, welche Datenmodalitäten eine Entscheidung prägen.\n XAMA führt diese Linie weiter: Nicht nur das Modell, auch die Erinnerungsstrukturen müssen erklärbar sein. \n Die Idee vom Gedächtnis ist alt, wie zB dass, intelligentes Handeln ein Gedächtnis braucht oder die Wichtigkeit des episodischen Gedächtnisses. und moderne KI-Agenten bekommen nun persistente Gedächtnissysteme. \n Daraus entsteht die neue Frage: Wie kontrollieren, erklären und auditieren wir dieses Gedächtnis, wenn es reale Entscheidungen beeinflusst?',
+      'Meine Forschung liegt an der Schnittstelle von angewandter KI, heterogenen Daten und Erklärbarkeit — etwa die multimodale Demenz-Forschungsarbeit, die sichtbar macht, welche Datenmodalitäten eine Entscheidung prägen.\n XAMA führt diese Linie weiter: Nicht nur das Modell, auch die Erinnerungsstrukturen eines Agenten müssen erklärbar sein. \n Die Idee vom Gedächtnis ist alt, wie zB dass, intelligentes Handeln ein Gedächtnis braucht oder die Wichtigkeit des episodischen Gedächtnisses. und moderne KI-Agenten bekommen nun persistente Gedächtnissysteme. \n Daraus entsteht die neue Frage: Wie kontrollieren, erklären und auditieren wir dieses Gedächtnis, wenn es reale Entscheidungen beeinflusst?',
   },
   {
     id: 'xama-leitfall',
@@ -81,7 +81,7 @@ export const SLIDES: SlideDefinition[] = [
     component: <Slide13Leitfall />,
     steps: 4,
     notes:
-      'Stellen Sie sich einen Data-Analytics-Agenten in einer Agentur oder Marketingabteilung vor: Er analysiert Kampagnendaten, lernt aus A/B-Tests, speichert Zielgruppen- und Performance-Erkenntnisse und unterstützt die nächste Budget- oder Messaging-Entscheidung. Hier wird Memory kritisch — der Agent empfiehlt nicht nur auf Basis des Prompts, sondern auf Basis dessen, woran er sich erinnert. Die zentrale These: Agent Memory ist in datengetriebenen Kommunikationsprozessen keine Komfortfunktion, sondern eine zweite Entscheidungsebene. XAMA macht diese Ebene erklärbar und auditierbar.',
+      'Stellen Sie sich einen Data-Analytics-Agenten in einer Agentur oder Marketingabteilung vor:\n- Er analysiert Kampagnendaten, lernt aus A/B-Tests,\n- speichert Zielgruppen- und Performance-Erkenntnisse und unterstützt die nächste Budget- oder Messaging-Entscheidung. Hier wird Memory kritisch \n— der Agent empfiehlt nicht nur auf Basis des Prompts, sondern auf Basis dessen, woran er sich erinnert. \n- Die zentrale These lautet: Agent Memory ist in datengetriebenen Kommunikationsprozessen keine Komfortfunktion, sondern eine zweite Entscheidungsebene. XAMA macht diese Ebene erklärbar und auditierbar.',
   },
   {
     id: 'xama-pillars',
@@ -111,7 +111,7 @@ export const SLIDES: SlideDefinition[] = [
     component: <Slide16ProfessurFit />,
     steps: 4,
     notes:
-      'Für die Professur Data Science ist XAMA ein klarer Forschungsanker. Fachlich: Data-Analytics-Agenten arbeiten genau mit den prozessgenerierten Daten des Kommunikationsumfelds — Kampagnenmetriken, Zielgruppenreaktionen, Entscheidungslogs. Methodisch: Datenqualität, Explainable AI, Evaluation, Audit Trails, agentische Systeme. Lehr-Forschung unmittelbar: Studierende bauen solche Agenten, evaluieren Retrieval, untersuchen Bias-Propagation, testen XAMA-Bench. Drittmittel projektförmig gedacht: Ein Praxispartner bringt einen realen Agenten oder Datensatz ein. Der EU AI Act macht Logging, Transparenz und Aufsicht zusätzlich relevant — das Hauptargument ist aber breiter: Accountability, weil diese Agenten datenbasierte Entscheidungen in Organisationen beeinflussen.',
+      'Für die Professur Data Science ist XAMA ein klarer Forschungsanker. \n- Fachlich: Data-Analytics-Agenten arbeiten genau mit den prozessgenerierten Daten des Kommunikationsumfelds — Kampagnenmetriken, Zielgruppenreaktionen, Entscheidungslogs. \n- Methodisch: Datenqualität, Explainable AI, Evaluation, Audit Trails, agentische Systeme. \n- Lehr-Forschung unmittelbar: Studierende bauen solche Agenten, evaluieren Retrieval, untersuchen Bias-Propagation, testen XAMA-Bench. \n- Transfer + Drittmittel projektförmig gedacht: Ein Praxispartner bringt einen realen Agenten oder Datensatz ein. Der EU AI Act macht Logging, Transparenz und Aufsicht zusätzlich relevant — das Hauptargument ist aber breiter: Accountability, weil diese Agenten datenbasierte Entscheidungen in Organisationen beeinflussen.',
   },
   {
     id: 'xama-roadmap',
