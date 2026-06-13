@@ -45,6 +45,85 @@ interface SlideDefinition {
 
 export const SLIDES: SlideDefinition[] = [
   {
+    id: 'xama-title',
+    part: 'forschung',
+    section: 'forschung-intro',
+    presenterTitle: 'XAMA — Forschungskonzept',
+    component: (
+      <SlideTitle
+        label="Forschungskonzept"
+        title="XAMA"
+        subtitle="Explainable and Auditable Memory for Data-Analytics Agents"
+        meta="Professur Data Science"
+        author="Dr. Paul-Glad Mihai, 19.06.2026, SPARKS University of Applied Sciences, Brands & Communication"
+        image="/images/xama-brain.png"
+        imageAlt="XAMA — Gedächtnis und Auditierbarkeit für KI-Agenten"
+      />
+    ),
+    notes:
+      'Ich möchte Ihnen mein Forschungskonzept vorstellen. XAMA: Explainable and Auditable Memory for Data Analystics Agents',
+  },
+  {
+    id: 'xama-genealogy',
+    part: 'forschung',
+    section: 'forschung-ausgangspunkt',
+    presenterTitle: 'Genealogie / Publikationsbrücke',
+    component: <Slide12Genealogy />,
+    steps: 5,
+    notes:
+      'Meine Forschung liegt an der Schnittstelle von angewandter KI, heterogenen Daten und Erklärbarkeit — etwa die multimodale Alzheimer-/FTD-Arbeit, die sichtbar macht, welche Datenmodalitäten eine Entscheidung prägen. XAMA führt diese Linie weiter: Nicht nur das Modell, auch die Erinnerungsstrukturen müssen erklärbar sein. Die Idee vom Gedächtnis ist alt — Soar, Tulving —, und moderne KI-Agenten bekommen nun persistente Gedächtnissysteme. Daraus entsteht die neue angewandte Frage: Wie kontrollieren, erklären und auditieren wir dieses Gedächtnis, wenn es reale Entscheidungen beeinflusst?',
+  },
+  {
+    id: 'xama-leitfall',
+    part: 'forschung',
+    section: 'forschung-ausgangspunkt',
+    presenterTitle: 'Leitfall: Data-Analytics-Agent',
+    component: <Slide13Leitfall />,
+    steps: 4,
+    notes:
+      'Stellen Sie sich einen Data-Analytics-Agenten in einer Agentur oder Marketingabteilung vor: Er analysiert Kampagnendaten, lernt aus A/B-Tests, speichert Zielgruppen- und Performance-Erkenntnisse und unterstützt die nächste Budget- oder Messaging-Entscheidung. Hier wird Memory kritisch — der Agent empfiehlt nicht nur auf Basis des Prompts, sondern auf Basis dessen, woran er sich erinnert. Die zentrale These: Agent Memory ist in datengetriebenen Kommunikationsprozessen keine Komfortfunktion, sondern eine zweite Entscheidungsebene. XAMA macht diese Ebene erklärbar und auditierbar.',
+  },
+  {
+    id: 'xama-pillars',
+    part: 'forschung',
+    section: 'forschung-programm',
+    presenterTitle: 'Drei Säulen',
+    component: <Slide14ThreePillars />,
+    steps: 4,
+    notes:
+      'XAMA besteht aus drei gleich starken Säulen. Erstens Explainable Memory Retrieval: Warum erinnert sich der Agent an genau diese Kampagnenerfahrung? — Attribution, graphbasierte Erklärungen, Retrieval-Scoring. Zweitens Responsible Memory Lifecycle: Was darf der Agent speichern, konsolidieren, überschreiben, vergessen? — Write-Gating, Validierung, Poisoning-Abwehr, technische Löschbarkeit. Drittens Evaluation & Benchmarking: Bestehende Systeme werden auf Abrufleistung geprüft, aber nicht auf Stabilität, Vollständigkeit und Auditierbarkeit der Erklärungen — dafür soll XAMA-Bench entstehen. Leitbegriff ist Accountability. (Keine Methoden-Enzyklopädie — Cluster nur kurz nennen.)',
+  },
+  {
+    id: 'xama-research-questions',
+    part: 'forschung',
+    section: 'forschung-programm',
+    presenterTitle: 'Technische Forschungsfragen',
+    component: <Slide15ResearchQuestions />,
+    steps: 3,
+    notes:
+      'Die drei Säulen werden über drei technische Fragen konkret. FF1: Lassen sich Shapley- und graphbasierte Attribution auf Multi-Turn Agent Memory übertragen, ohne nachträglich plausibel klingende Begründungen zu erzeugen? Im Leitfall: Welche Kampagnen oder A/B-Tests haben die Empfehlung wirklich beeinflusst? FF2: Wie müssen Write-Gating, Validierung und Forgetting gestaltet sein, damit verzerrte Annahmen, temporäre Effekte oder fehlerhafte Messungen nicht langfristig weiterwirken? FF3: Welche Metriken machen Faithfulness, Logging-Vollständigkeit, Erklärungsstabilität und Forgetting Correctness messbar? Jede Frage führt zum Data-Analytics-Agenten zurück.',
+  },
+  {
+    id: 'xama-fit',
+    part: 'forschung',
+    section: 'forschung-umsetzung',
+    presenterTitle: 'Fit zur Professur Data Science',
+    component: <Slide16ProfessurFit />,
+    steps: 4,
+    notes:
+      'Für die Professur Data Science ist XAMA ein klarer Forschungsanker. Fachlich: Data-Analytics-Agenten arbeiten genau mit den prozessgenerierten Daten des Kommunikationsumfelds — Kampagnenmetriken, Zielgruppenreaktionen, Entscheidungslogs. Methodisch: Datenqualität, Explainable AI, Evaluation, Audit Trails, agentische Systeme. Lehr-Forschung unmittelbar: Studierende bauen solche Agenten, evaluieren Retrieval, untersuchen Bias-Propagation, testen XAMA-Bench. Drittmittel projektförmig gedacht: Ein Praxispartner bringt einen realen Agenten oder Datensatz ein. Der EU AI Act macht Logging, Transparenz und Aufsicht zusätzlich relevant — das Hauptargument ist aber breiter: Accountability, weil diese Agenten datenbasierte Entscheidungen in Organisationen beeinflussen. (Sparks-Fit zeigen, XAMA nicht für die ganze Hochschule überverkaufen.)',
+  },
+  {
+    id: 'xama-roadmap',
+    part: 'forschung',
+    section: 'forschung-umsetzung',
+    presenterTitle: 'Erste 12 Monate',
+    component: <Slide17TwelveMonths />,
+    steps: 5,
+    notes:
+      'In den ersten zwölf Monaten in vier Schritten. Monat 1–3: den Leitfall präzisieren — welche Daten, was wird gespeichert, wann abgerufen, wo entstehen Accountability-Risiken; Baseline wählen, Praxispartner identifizieren. Monat 4–6: ein Prototyp für Explainable Memory Retrieval, der dokumentiert, welche gespeicherten Erfahrungen an einer Empfehlung beteiligt waren. Monat 7–9: XAMA-Bench v0.1 mit Metriken für Faithfulness, Logging und Erklärungsstabilität — gut in studentische Projekt- und Abschlussarbeiten integrierbar. Monat 10–12: Transfer und Publikation — Workshop-Paper, Drittmittel-Skizze, Integration in die Lehre. Schlussbotschaft: XAMA macht sichtbar, wie Data-Analytics-Agenten erinnern — und wie diese Erinnerungen erklärbar, auditierbar und verantwortbar werden. (Umsetzungsreif wirken, nicht überambitioniert.)',
+  },
+  {
     id: 'title',
     part: 'teaching',
     presenterTitle: 'Title',
@@ -141,96 +220,17 @@ export const SLIDES: SlideDefinition[] = [
     notes: 'To close: this concept is designed for all three Bachelor programmes that meet in this MIND module — Copy & Story, Media & Data, and Design & Arts. It is data-science-heavy enough to match the curriculum — students do the full workflow from question through analysis to recommendation — but it stays anchored in media and communication practice, and the two learning paths let a copywriter and a data analyst succeed on the same cognitive standard. The on-site Studio is the didactic climax. The two-lane assessment handles AI honestly. The curricular integration across the bachelor is explicit. Students leave able to defend evidence-based recommendations under uncertainty — the competence they need for the Practice Project, the Bachelor Thesis, and professional work in media, communication, and digital marketing.',
   },
   {
-    id: 'xama-title',
-    part: 'forschung',
-    section: 'forschung-intro',
-    presenterTitle: 'XAMA — Forschungskonzept',
-    component: (
-      <SlideTitle
-        label="Forschungskonzept"
-        title="XAMA"
-        subtitle="Explainable and Auditable Memory for Data-Analytics Agents"
-        meta="Professur Data Science"
-        author="Dr. Paul-Glad Mihai, 19.06.2026, SPARKS University of Applied Sciences, Brands & Communication"
-        image="/images/xama-brain.png"
-        imageAlt="XAMA — Gedächtnis und Auditierbarkeit für KI-Agenten"
-      />
-    ),
-    notes:
-      'Nicht lange auf der Titelfolie bleiben. Direkt in die wissenschaftliche Linie einsteigen: XAMA — erklärbares und auditierbares Gedächtnis für Data-Analytics-Agenten. Leitmotiv: Agent → Memory → Accountability.',
-  },
-  {
-    id: 'xama-genealogy',
-    part: 'forschung',
-    section: 'forschung-ausgangspunkt',
-    presenterTitle: 'Genealogie / Publikationsbrücke',
-    component: <Slide12Genealogy />,
-    steps: 5,
-    notes:
-      'Meine Forschung liegt an der Schnittstelle von angewandter KI, heterogenen Daten und Erklärbarkeit — etwa die multimodale Alzheimer-/FTD-Arbeit, die sichtbar macht, welche Datenmodalitäten eine Entscheidung prägen. XAMA führt diese Linie weiter: Nicht nur das Modell, auch die Erinnerungsstrukturen müssen erklärbar sein. Die Idee vom Gedächtnis ist alt — Soar, Tulving —, und moderne KI-Agenten bekommen nun persistente Gedächtnissysteme. Daraus entsteht die neue angewandte Frage: Wie kontrollieren, erklären und auditieren wir dieses Gedächtnis, wenn es reale Entscheidungen beeinflusst?',
-  },
-  {
-    id: 'xama-leitfall',
-    part: 'forschung',
-    section: 'forschung-ausgangspunkt',
-    presenterTitle: 'Leitfall: Data-Analytics-Agent',
-    component: <Slide13Leitfall />,
-    steps: 4,
-    notes:
-      'Stellen Sie sich einen Data-Analytics-Agenten in einer Agentur oder Marketingabteilung vor: Er analysiert Kampagnendaten, lernt aus A/B-Tests, speichert Zielgruppen- und Performance-Erkenntnisse und unterstützt die nächste Budget- oder Messaging-Entscheidung. Hier wird Memory kritisch — der Agent empfiehlt nicht nur auf Basis des Prompts, sondern auf Basis dessen, woran er sich erinnert. Die zentrale These: Agent Memory ist in datengetriebenen Kommunikationsprozessen keine Komfortfunktion, sondern eine zweite Entscheidungsebene. XAMA macht diese Ebene erklärbar und auditierbar.',
-  },
-  {
-    id: 'xama-pillars',
-    part: 'forschung',
-    section: 'forschung-programm',
-    presenterTitle: 'Drei Säulen',
-    component: <Slide14ThreePillars />,
-    steps: 4,
-    notes:
-      'XAMA besteht aus drei gleich starken Säulen. Erstens Explainable Memory Retrieval: Warum erinnert sich der Agent an genau diese Kampagnenerfahrung? — Attribution, graphbasierte Erklärungen, Retrieval-Scoring. Zweitens Responsible Memory Lifecycle: Was darf der Agent speichern, konsolidieren, überschreiben, vergessen? — Write-Gating, Validierung, Poisoning-Abwehr, technische Löschbarkeit. Drittens Evaluation & Benchmarking: Bestehende Systeme werden auf Abrufleistung geprüft, aber nicht auf Stabilität, Vollständigkeit und Auditierbarkeit der Erklärungen — dafür soll XAMA-Bench entstehen. Leitbegriff ist Accountability. (Keine Methoden-Enzyklopädie — Cluster nur kurz nennen.)',
-  },
-  {
-    id: 'xama-research-questions',
-    part: 'forschung',
-    section: 'forschung-programm',
-    presenterTitle: 'Technische Forschungsfragen',
-    component: <Slide15ResearchQuestions />,
-    steps: 3,
-    notes:
-      'Die drei Säulen werden über drei technische Fragen konkret. FF1: Lassen sich Shapley- und graphbasierte Attribution auf Multi-Turn Agent Memory übertragen, ohne nachträglich plausibel klingende Begründungen zu erzeugen? Im Leitfall: Welche Kampagnen oder A/B-Tests haben die Empfehlung wirklich beeinflusst? FF2: Wie müssen Write-Gating, Validierung und Forgetting gestaltet sein, damit verzerrte Annahmen, temporäre Effekte oder fehlerhafte Messungen nicht langfristig weiterwirken? FF3: Welche Metriken machen Faithfulness, Logging-Vollständigkeit, Erklärungsstabilität und Forgetting Correctness messbar? Jede Frage führt zum Data-Analytics-Agenten zurück.',
-  },
-  {
-    id: 'xama-fit',
-    part: 'forschung',
-    section: 'forschung-umsetzung',
-    presenterTitle: 'Fit zur Professur Data Science',
-    component: <Slide16ProfessurFit />,
-    steps: 4,
-    notes:
-      'Für die Professur Data Science ist XAMA ein klarer Forschungsanker. Fachlich: Data-Analytics-Agenten arbeiten genau mit den prozessgenerierten Daten des Kommunikationsumfelds — Kampagnenmetriken, Zielgruppenreaktionen, Entscheidungslogs. Methodisch: Datenqualität, Explainable AI, Evaluation, Audit Trails, agentische Systeme. Lehr-Forschung unmittelbar: Studierende bauen solche Agenten, evaluieren Retrieval, untersuchen Bias-Propagation, testen XAMA-Bench. Drittmittel projektförmig gedacht: Ein Praxispartner bringt einen realen Agenten oder Datensatz ein. Der EU AI Act macht Logging, Transparenz und Aufsicht zusätzlich relevant — das Hauptargument ist aber breiter: Accountability, weil diese Agenten datenbasierte Entscheidungen in Organisationen beeinflussen. (Sparks-Fit zeigen, XAMA nicht für die ganze Hochschule überverkaufen.)',
-  },
-  {
-    id: 'xama-roadmap',
-    part: 'forschung',
-    section: 'forschung-umsetzung',
-    presenterTitle: 'Erste 12 Monate',
-    component: <Slide17TwelveMonths />,
-    steps: 5,
-    notes:
-      'In den ersten zwölf Monaten in vier Schritten. Monat 1–3: den Leitfall präzisieren — welche Daten, was wird gespeichert, wann abgerufen, wo entstehen Accountability-Risiken; Baseline wählen, Praxispartner identifizieren. Monat 4–6: ein Prototyp für Explainable Memory Retrieval, der dokumentiert, welche gespeicherten Erfahrungen an einer Empfehlung beteiligt waren. Monat 7–9: XAMA-Bench v0.1 mit Metriken für Faithfulness, Logging und Erklärungsstabilität — gut in studentische Projekt- und Abschlussarbeiten integrierbar. Monat 10–12: Transfer und Publikation — Workshop-Paper, Drittmittel-Skizze, Integration in die Lehre. Schlussbotschaft: XAMA macht sichtbar, wie Data-Analytics-Agenten erinnern — und wie diese Erinnerungen erklärbar, auditierbar und verantwortbar werden. (Umsetzungsreif wirken, nicht überambitioniert.)',
-  },
-  {
     id: 'methods-detail',
     part: 'teaching',
     section: 'positioning',
     hidden: true,
-    parent: 3, // running-case
+    parent: 10, // running-case
     presenterTitle: 'Detail: Methods & Models',
     component: <Slide04DetailMethods />,
     notes:
       'Three blocks, oriented on the standard intro-DS canon. Week 3 statistics: descriptive stats and distributions, correlation vs. confounding, hypothesis testing / A/B tests, confidence intervals and effect size. Week 4 ML: supervised — linear and logistic regression, decision trees and random forests (deliberately interpretable models with feature importance, not black boxes); unsupervised — k-means for audience segmentation, PCA for dimensionality reduction. Evaluation: train/test split, baselines, confusion matrix, precision/recall, ROC/AUC, overfitting. Tools differ per learning path: Python/pandas/scikit-learn/Jupyter for Media & Data, browser-based low-code for Story & Design. Deep learning, transfer learning, reinforcement learning are named and contextualized but not trained hands-on — honest scope for a 5-week intro module with a mixed cohort.',
   },
-];
+]
 
 /* ------------------------------------------------------------------ */
 /*  Sections for sidebar navigation                                    */
@@ -238,65 +238,65 @@ export const SLIDES: SlideDefinition[] = [
 
 const NAV = [
   {
-    id: 'teaching',
-    label: 'Teaching Concept',
-    headerTarget: 1,
-    sections: [
-      {
-        id: 'positioning',
-        label: 'Positioning',
-        slides: [
-          { id: 'position-in-curriculum', label: 'Curriculum Position', number: 2 },
-          { id: 'core-thesis', label: 'Core Thesis', number: 3 },
-          { id: 'running-case', label: 'Running Case & Workflow', number: 4 },
-        ],
-      },
-      {
-        id: 'didactic-design',
-        label: 'Didactic Design',
-        slides: [
-          { id: 'two-learning-paths', label: 'Two Learning Paths', number: 5 },
-          { id: 'five-week-roadmap', label: 'Five-Week Roadmap', number: 6 },
-          { id: 'self-study-architecture', label: 'Self-Study Architecture', number: 7 },
-          { id: 'data-science-studio', label: 'Data Science Studio', number: 8 },
-        ],
-      },
-      {
-        id: 'assessment',
-        label: 'Assessment',
-        slides: [
-          { id: 'assessment-concept', label: 'Assessment Concept', number: 9 },
-        ],
-      },
-    ],
-  },
-  {
     id: 'forschung',
     label: 'Forschungskonzept',
-    headerTarget: 11,
+    headerTarget: 1,
     sections: [
       {
         id: 'forschung-ausgangspunkt',
         label: 'Ausgangspunkt',
         slides: [
-          { id: 'xama-genealogy', label: 'Genealogie', number: 12 },
-          { id: 'xama-leitfall', label: 'Leitfall', number: 13 },
+          { id: 'xama-genealogy', label: 'Genealogie', number: 2 },
+          { id: 'xama-leitfall', label: 'Leitfall', number: 3 },
         ],
       },
       {
         id: 'forschung-programm',
         label: 'Forschungsprogramm',
         slides: [
-          { id: 'xama-pillars', label: 'Drei Säulen', number: 14 },
-          { id: 'xama-research-questions', label: 'Forschungsfragen', number: 15 },
+          { id: 'xama-pillars', label: 'Drei Säulen', number: 4 },
+          { id: 'xama-research-questions', label: 'Forschungsfragen', number: 5 },
         ],
       },
       {
         id: 'forschung-umsetzung',
         label: 'Umsetzung',
         slides: [
-          { id: 'xama-fit', label: 'Fit zur Professur', number: 16 },
-          { id: 'xama-roadmap', label: 'Erste 12 Monate', number: 17 },
+          { id: 'xama-fit', label: 'Fit zur Professur', number: 6 },
+          { id: 'xama-roadmap', label: 'Erste 12 Monate', number: 7 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'teaching',
+    label: 'Teaching Concept',
+    headerTarget: 8,
+    sections: [
+      {
+        id: 'positioning',
+        label: 'Positioning',
+        slides: [
+          { id: 'position-in-curriculum', label: 'Curriculum Position', number: 9 },
+          { id: 'core-thesis', label: 'Core Thesis', number: 10 },
+          { id: 'running-case', label: 'Running Case & Workflow', number: 11 },
+        ],
+      },
+      {
+        id: 'didactic-design',
+        label: 'Didactic Design',
+        slides: [
+          { id: 'two-learning-paths', label: 'Two Learning Paths', number: 12 },
+          { id: 'five-week-roadmap', label: 'Five-Week Roadmap', number: 13 },
+          { id: 'self-study-architecture', label: 'Self-Study Architecture', number: 14 },
+          { id: 'data-science-studio', label: 'Data Science Studio', number: 15 },
+        ],
+      },
+      {
+        id: 'assessment',
+        label: 'Assessment',
+        slides: [
+          { id: 'assessment-concept', label: 'Assessment Concept', number: 16 },
         ],
       },
     ],
