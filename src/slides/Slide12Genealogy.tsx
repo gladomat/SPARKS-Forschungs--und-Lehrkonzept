@@ -30,7 +30,30 @@ export const Slide12Genealogy: React.FC = () => {
 
   return (
     <SlideContent label="Ausgangspunkt" title="Von erklärbarer KI zu erklärbarem Agentengedächtnis">
-      <div className="grid grid-cols-[1.4fr_1fr] gap-12 max-w-6xl">
+      <div className="grid grid-cols-[1fr_1.4fr] gap-12 max-w-6xl">
+        {/* Prior-work credibility card */}
+        <motion.div
+          initial={false}
+          animate={{ opacity: step >= 0 ? 1 : 0, y: step >= 0 ? 0 : 16 }}
+          transition={{ duration: 0.4 }}
+          className="self-center bg-white border border-surface-container-high rounded-lg p-6"
+        >
+          <div className="font-mono text-xs text-action-orange tracking-[0.15em] uppercase mb-3">
+            Meine vorherige Forschung
+          </div>
+          <p className="font-body text-sm text-deep-onyx leading-relaxed">
+            Guarnier et al., <span className="italic">„Cascaded Multimodal Deep Learning in the Differential
+            Diagnosis, Progression Prediction, and Staging of Alzheimer's and Frontotemporal Dementia"</span>,
+            medRxiv, 2024.
+          </p>
+          <div className="asymmetric-rule my-4" />
+          <p className="font-body text-sm text-secondary leading-relaxed">
+            Multimodale Daten entscheidungsnah nutzbar machen — und sichtbar machen, welche Modalitäten die
+            Entscheidung prägen. XAMA verschiebt diese Linie: nicht nur das Modell, auch die Erinnerung muss
+            erklärbar sein.
+          </p>
+        </motion.div>
+
         {/* Genealogy timeline */}
         <div className="relative pl-6">
           <div className="absolute left-[7px] top-2 bottom-2 w-[2px] bg-action-orange/20" />
@@ -39,7 +62,7 @@ export const Slide12Genealogy: React.FC = () => {
               <motion.div
                 key={node.tag}
                 initial={false}
-                animate={{ opacity: step >= i ? 1 : 0, x: step >= i ? 0 : -12 }}
+                animate={{ opacity: step >= i + 1 ? 1 : 0, x: step >= i + 1 ? 0 : -12 }}
                 transition={{ duration: 0.35 }}
                 className="relative"
               >
@@ -59,29 +82,6 @@ export const Slide12Genealogy: React.FC = () => {
             ))}
           </div>
         </div>
-
-        {/* Prior-work credibility card */}
-        <motion.div
-          initial={false}
-          animate={{ opacity: step >= 4 ? 1 : 0, y: step >= 4 ? 0 : 16 }}
-          transition={{ duration: 0.4 }}
-          className="self-center bg-white border border-surface-container-high rounded-lg p-6"
-        >
-          <div className="font-mono text-xs text-action-orange tracking-[0.15em] uppercase mb-3">
-            Meine vorherige Forschung
-          </div>
-          <p className="font-body text-sm text-deep-onyx leading-relaxed">
-            Guarnier et al., <span className="italic">„Cascaded Multimodal Deep Learning in the Differential
-            Diagnosis, Progression Prediction, and Staging of Alzheimer's and Frontotemporal Dementia"</span>,
-            medRxiv, 2024.
-          </p>
-          <div className="asymmetric-rule my-4" />
-          <p className="font-body text-sm text-secondary leading-relaxed">
-            Multimodale Daten entscheidungsnah nutzbar machen — und sichtbar machen, welche Modalitäten die
-            Entscheidung prägen. XAMA verschiebt diese Linie: nicht nur das Modell, auch die Erinnerung muss
-            erklärbar sein.
-          </p>
-        </motion.div>
       </div>
     </SlideContent>
   );
