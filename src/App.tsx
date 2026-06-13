@@ -71,7 +71,7 @@ export const SLIDES: SlideDefinition[] = [
     component: <Slide12Genealogy />,
     steps: 5,
     notes:
-      'Meine Forschung liegt an der Schnittstelle von angewandter KI, heterogenen Daten und Erklärbarkeit — etwa die multimodale Demenz-Forschungsarbeit, die sichtbar macht, welche Datenmodalitäten eine Entscheidung prägen.\n XAMA führt diese Linie weiter: Nicht nur das Modell, auch die Erinnerungsstrukturen müssen erklärbar sein. \n Die Idee vom Gedächtnis ist alt, wie zB dass intelligentes Handeln ein Gedächtnis braucht oder die Wichtigkeit des episodischen Gedächtnisses. und moderne KI-Agenten bekommen nun persistente Gedächtnissysteme. \n Daraus entsteht die neue angewandte Frage: Wie kontrollieren, erklären und auditieren wir dieses Gedächtnis, wenn es reale Entscheidungen beeinflusst?',
+      'Meine Forschung liegt an der Schnittstelle von angewandter KI, heterogenen Daten und Erklärbarkeit — etwa die multimodale Demenz-Forschungsarbeit, die sichtbar macht, welche Datenmodalitäten eine Entscheidung prägen.\n XAMA führt diese Linie weiter: Nicht nur das Modell, auch die Erinnerungsstrukturen müssen erklärbar sein. \n Die Idee vom Gedächtnis ist alt, wie zB dass, intelligentes Handeln ein Gedächtnis braucht oder die Wichtigkeit des episodischen Gedächtnisses. und moderne KI-Agenten bekommen nun persistente Gedächtnissysteme. \n Daraus entsteht die neue Frage: Wie kontrollieren, erklären und auditieren wir dieses Gedächtnis, wenn es reale Entscheidungen beeinflusst?',
   },
   {
     id: 'xama-leitfall',
