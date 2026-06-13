@@ -57,7 +57,7 @@ export const Slide07TwoLearningPaths: React.FC = () => {
           />
           <PathCard
             visible={step >= 1}
-            label="Media & Performance"
+            label="Data & Analytics"
             audience="Media & Data · quantitatively inclined"
             tool="notebook-based, Python ecosystem"
             focus="reproduce, extend, model, validate"

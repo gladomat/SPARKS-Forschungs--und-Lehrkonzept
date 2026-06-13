@@ -155,7 +155,7 @@ export const SLIDES: SlideDefinition[] = [
     presenterTitle: 'Core Thesis',
     component: <Slide03CoreThesis />,
     steps: 5,
-    notes: 'This is the thesis the whole module hangs on: Data Science is the workflow that turns media data into defensible decisions, the disciplined path from a business question to a data backed recommendation you can stand behind. By semester five every student already shares a foundation in AI and Coding & Prompting, and each programme brings its own craft on top — analytics, copy, or design. Data Science is where those strands integrate into one applied workflow. The driving question keeps the module honest: which media or marketing decision is actually justified by this data — and, just as important, which is not. The graduate we are aiming for is a communication professional, across data, copy, and design, who can run the workflow, weigh uncertainty and bias, and translate findings into a recommendation they can defend.',
+    notes: 'This is the thesis the whole module hangs on. By semester five every student already shares a foundation in AI and Coding & Prompting, and each programme brings its own craft on top — analytics, copy, or design. Data Science is where those strands integrate into one applied workflow: \n- it turns media data \n- through an applied workflow \n- into defensible decisions, the disciplined path from a business question to a data backed recommendation you can stand behind. \n- The driving question is: which media or marketing decision is actually justified by this data — and, just as important, which is not.',
   },
   {
     id: 'running-case',
@@ -164,7 +164,7 @@ export const SLIDES: SlideDefinition[] = [
     presenterTitle: 'Running Case & Workflow',
     component: <Slide04RunningCase />,
     steps: 3,
-    notes: 'Students move through the full data-science cycle over the five weeks, always on the same running case — each week deepens one stage of the pipeline, in step with the Five-Week Roadmap. The pipeline — Question, Data, Cleaning, EDA, Statistics, Modelling, Evaluation, Interpretation, Recommendation — is the backbone of the module. The campaign dataset includes audience segments, creative variants, impressions/clicks/conversions, engagement metrics, channel information, and a recommendation or targeting component. It can be swapped each semester without restructuring the module.',
+    notes: 'The course pipeline includes — Question, Data, Cleaning, EDA, Statistics, Modelling, Evaluation, Interpretation, Recommendation — is the backbone of the module. \n -The campaign dataset includes audience segments, creative variants, impressions/clicks/conversions, engagement metrics, channel information, and a recommendation or targeting component. It can be swapped each semester without restructuring the module. \n- Students move through the full data-science cycle over the five weeks, always on the same running case — each week deepens one stage of the pipeline, in step with the Five-Week Roadmap. ',
   },
   {
     id: 'two-learning-paths',
@@ -173,7 +173,7 @@ export const SLIDES: SlideDefinition[] = [
     presenterTitle: 'Two Learning Paths',
     component: <Slide07TwoLearningPaths />,
     steps: 3,
-    notes: 'Here is how a copywriter and a data analyst both succeed in the same module. Because the cohort is genuinely mixed, the module runs two learning paths over one shared backbone. The Communication & Design path — Copy & Story and Design & Arts — works low-code and browser-based, AI-assisted, and focuses on interpreting, critiquing, visualizing, and explaining the evidence. The Media path — Media & Data and anyone quantitatively inclined — works in notebooks and the Python ecosystem and goes deeper: reproduce, extend, model, validate. Crucially, the paths are not two different courses. Same dataset, same research question, same evidence standards, same competencies — different tool depth, identical cognitive standard. A student is assessed on the quality of their reasoning and the defensibility of their decision, not on how much code they wrote. This is what makes a Data Science module honest for students who have never programmed.',
+    notes: 'Here is how a copywriter and a data analyst both succeed in the same module. Because the cohort is genuinely mixed, the module runs two learning paths over one shared backbone. The Communication & Design path — Copy & Story and Design & Arts — works low-code and browser-based, AI-assisted, and focuses on interpreting, critiquing, visualizing, and explaining the evidence. The Data & Analytics path — Media & Data and anyone quantitatively inclined — works in notebooks and the Python ecosystem and goes deeper: reproduce, extend, model, validate. Crucially, the paths are not two different courses. Same dataset, same research question, same evidence standards, same competencies — different tool depth, identical cognitive standard. A student is assessed on the quality of their reasoning and the defensibility of their decision, not on how much code they wrote. This is what makes a Data Science module honest for students who have never programmed.',
   },
   {
     id: 'five-week-roadmap',
