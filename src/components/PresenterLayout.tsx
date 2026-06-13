@@ -72,7 +72,7 @@ export const PresenterLayout: React.FC<PresenterLayoutProps> = ({
             <span className="font-mono text-[0.6rem] text-white/40 tracking-[0.15em] uppercase">
               Current
             </span>
-            <Thumbnail node={current.component} step={currentStep} scale={0.44} />
+            <Thumbnail node={current.component} step={currentStep} scale={0.6} />
           </div>
           <div className="flex flex-col gap-2">
             <span className="font-mono text-[0.6rem] text-white/40 tracking-[0.15em] uppercase">

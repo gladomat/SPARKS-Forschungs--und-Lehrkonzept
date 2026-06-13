@@ -65,7 +65,7 @@ export const Slide09DataScienceStudio: React.FC = () => {
       <div className="max-w-4xl flex flex-col gap-5">
         <div className="grid grid-cols-2 gap-5">
           <DayCard
-            visible={step >= 0}
+            visible={step >= 1}
             day="Day 1 · On-site"
             title="Analyze, Model, Evaluate"
             rows={[
@@ -75,7 +75,7 @@ export const Slide09DataScienceStudio: React.FC = () => {
             ]}
           />
           <DayCard
-            visible={step >= 1}
+            visible={step >= 2}
             day="Day 2 · On-site"
             title="Defend, Critique, Translate"
             rows={[
@@ -88,7 +88,7 @@ export const Slide09DataScienceStudio: React.FC = () => {
 
         <motion.div
           initial={false}
-          animate={{ opacity: step >= 2 ? 1 : 0, y: step >= 2 ? 0 : 12 }}
+          animate={{ opacity: step >= 3 ? 1 : 0, y: step >= 3 ? 0 : 12 }}
           transition={{ duration: 0.4 }}
           className="border-2 border-action-orange bg-action-orange/[0.04] rounded-lg px-6 py-4 flex items-center justify-center gap-3"
         >

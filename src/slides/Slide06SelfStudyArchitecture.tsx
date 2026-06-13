@@ -38,6 +38,9 @@ export const Slide06SelfStudyArchitecture: React.FC = () => {
   return (
     <SlideContent label="Didactic Design" title="Self-Study Architecture">
       <div className="max-w-3xl flex flex-col gap-6">
+        <span className="font-mono text-[0.6rem] text-data-gray tracking-[0.15em] uppercase">
+          The weekly loop · repeated each week
+        </span>
         <div className="grid grid-cols-2 gap-5">
           <LoopCard
             visible={step >= 0}
