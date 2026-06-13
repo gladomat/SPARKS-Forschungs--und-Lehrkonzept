@@ -71,7 +71,7 @@ export const SLIDES: SlideDefinition[] = [
     component: <Slide12Genealogy />,
     steps: 5,
     notes:
-      'Meine Forschung liegt an der Schnittstelle von angewandter KI, heterogenen Daten und Erklärbarkeit — etwa die multimodale Demenz-Forschungsarbeit, die sichtbar macht, welche Datenmodalitäten eine Entscheidung prägen. XAMA führt diese Linie weiter: Nicht nur das Modell, auch die Erinnerungsstrukturen müssen erklärbar sein. Die Idee vom Gedächtnis ist alt — Soar, Tulving —, und moderne KI-Agenten bekommen nun persistente Gedächtnissysteme. Daraus entsteht die neue angewandte Frage: Wie kontrollieren, erklären und auditieren wir dieses Gedächtnis, wenn es reale Entscheidungen beeinflusst?',
+      'Meine Forschung liegt an der Schnittstelle von angewandter KI, heterogenen Daten und Erklärbarkeit — etwa die multimodale Demenz-Forschungsarbeit, die sichtbar macht, welche Datenmodalitäten eine Entscheidung prägen.\n XAMA führt diese Linie weiter: Nicht nur das Modell, auch die Erinnerungsstrukturen müssen erklärbar sein. \n Die Idee vom Gedächtnis ist alt, wie zB dass intelligentes Handeln ein Gedächtnis braucht oder die Wichtigkeit des episodischen Gedächtnisses. und moderne KI-Agenten bekommen nun persistente Gedächtnissysteme. \n Daraus entsteht die neue angewandte Frage: Wie kontrollieren, erklären und auditieren wir dieses Gedächtnis, wenn es reale Entscheidungen beeinflusst?',
   },
   {
     id: 'xama-leitfall',
@@ -91,7 +91,7 @@ export const SLIDES: SlideDefinition[] = [
     component: <Slide14ThreePillars />,
     steps: 4,
     notes:
-      'XAMA besteht aus drei gleich starken Säulen. Erstens Explainable Memory Retrieval: Warum erinnert sich der Agent an genau diese Kampagnenerfahrung? — Attribution, graphbasierte Erklärungen, Retrieval-Scoring. Zweitens Responsible Memory Lifecycle: Was darf der Agent speichern, konsolidieren, überschreiben, vergessen? — Write-Gating, Validierung, Poisoning-Abwehr, technische Löschbarkeit. Drittens Evaluation & Benchmarking: Bestehende Systeme werden auf Abrufleistung geprüft, aber nicht auf Stabilität, Vollständigkeit und Auditierbarkeit der Erklärungen — dafür soll XAMA-Bench entstehen. Leitbegriff ist Accountability. (Keine Methoden-Enzyklopädie — Cluster nur kurz nennen.)',
+      'XAMA besteht aus drei gleich starken Säulen. \nErstens Explainable Memory Retrieval: Warum erinnert sich der Agent an genau diese Kampagnenerfahrung? — Attribution, graphbasierte Erklärungen, Retrieval-Scoring. \n Zweitens Responsible Memory Lifecycle: Was darf der Agent speichern, konsolidieren, überschreiben, vergessen? — Write-Gating (Write-Gating ist ein Kontrollmechanismus, der entscheidet, ob ein Agent etwas in sein Langzeitgedächtnis schreiben darf — bevor es passiert. Wie ein Türsteher für den Memory-Store.), Validierung, Poisoning-Abwehr, technische Löschbarkeit. \n Drittens Evaluation & Benchmarking: Bestehende Systeme werden auf Abrufleistung geprüft, aber nicht auf Stabilität, Vollständigkeit und Auditierbarkeit der Erklärungen — dafür soll XAMA-Bench entstehen. Leitbegriff ist Accountability.',
   },
   {
     id: 'xama-research-questions',
@@ -101,7 +101,7 @@ export const SLIDES: SlideDefinition[] = [
     component: <Slide15ResearchQuestions />,
     steps: 3,
     notes:
-      'Die drei Säulen werden über drei technische Fragen konkret. FF1: Lassen sich Shapley- und graphbasierte Attribution auf Multi-Turn Agent Memory übertragen, ohne nachträglich plausibel klingende Begründungen zu erzeugen? Im Leitfall: Welche Kampagnen oder A/B-Tests haben die Empfehlung wirklich beeinflusst? FF2: Wie müssen Write-Gating, Validierung und Forgetting gestaltet sein, damit verzerrte Annahmen, temporäre Effekte oder fehlerhafte Messungen nicht langfristig weiterwirken? FF3: Welche Metriken machen Faithfulness, Logging-Vollständigkeit, Erklärungsstabilität und Forgetting Correctness messbar? Jede Frage führt zum Data-Analytics-Agenten zurück.',
+      'Die drei Säulen werden über drei technische Fragen konkret. FF1: Lassen sich Shapley- und graphbasierte Attribution auf Multi-Turn Agent Memory übertragen, ohne nachträglich plausibel klingende Begründungen zu erzeugen? Im Leitfall: Welche Kampagnen oder A/B-Tests haben die Empfehlung wirklich beeinflusst? \n FF2: Wie müssen Write-Gating, Validierung und Forgetting gestaltet sein, damit verzerrte Annahmen, temporäre Effekte oder fehlerhafte Messungen nicht langfristig weiterwirken? \n FF3: Welche Metriken machen Faithfulness, Logging-Vollständigkeit, Erklärungsstabilität und Forgetting Correctness messbar? Jede Frage führt zum Data-Analytics-Agenten zurück.',
   },
   {
     id: 'xama-fit',
@@ -111,7 +111,7 @@ export const SLIDES: SlideDefinition[] = [
     component: <Slide16ProfessurFit />,
     steps: 4,
     notes:
-      'Für die Professur Data Science ist XAMA ein klarer Forschungsanker. Fachlich: Data-Analytics-Agenten arbeiten genau mit den prozessgenerierten Daten des Kommunikationsumfelds — Kampagnenmetriken, Zielgruppenreaktionen, Entscheidungslogs. Methodisch: Datenqualität, Explainable AI, Evaluation, Audit Trails, agentische Systeme. Lehr-Forschung unmittelbar: Studierende bauen solche Agenten, evaluieren Retrieval, untersuchen Bias-Propagation, testen XAMA-Bench. Drittmittel projektförmig gedacht: Ein Praxispartner bringt einen realen Agenten oder Datensatz ein. Der EU AI Act macht Logging, Transparenz und Aufsicht zusätzlich relevant — das Hauptargument ist aber breiter: Accountability, weil diese Agenten datenbasierte Entscheidungen in Organisationen beeinflussen. (Sparks-Fit zeigen, XAMA nicht für die ganze Hochschule überverkaufen.)',
+      'Für die Professur Data Science ist XAMA ein klarer Forschungsanker. Fachlich: Data-Analytics-Agenten arbeiten genau mit den prozessgenerierten Daten des Kommunikationsumfelds — Kampagnenmetriken, Zielgruppenreaktionen, Entscheidungslogs. Methodisch: Datenqualität, Explainable AI, Evaluation, Audit Trails, agentische Systeme. Lehr-Forschung unmittelbar: Studierende bauen solche Agenten, evaluieren Retrieval, untersuchen Bias-Propagation, testen XAMA-Bench. Drittmittel projektförmig gedacht: Ein Praxispartner bringt einen realen Agenten oder Datensatz ein. Der EU AI Act macht Logging, Transparenz und Aufsicht zusätzlich relevant — das Hauptargument ist aber breiter: Accountability, weil diese Agenten datenbasierte Entscheidungen in Organisationen beeinflussen.',
   },
   {
     id: 'xama-roadmap',
@@ -121,7 +121,7 @@ export const SLIDES: SlideDefinition[] = [
     component: <Slide17TwelveMonths />,
     steps: 5,
     notes:
-      'In den ersten zwölf Monaten in vier Schritten. Monat 1–3: den Leitfall präzisieren — welche Daten, was wird gespeichert, wann abgerufen, wo entstehen Accountability-Risiken; Baseline wählen, Praxispartner identifizieren. Monat 4–6: ein Prototyp für Explainable Memory Retrieval, der dokumentiert, welche gespeicherten Erfahrungen an einer Empfehlung beteiligt waren. Monat 7–9: XAMA-Bench v0.1 mit Metriken für Faithfulness, Logging und Erklärungsstabilität — gut in studentische Projekt- und Abschlussarbeiten integrierbar. Monat 10–12: Transfer und Publikation — Workshop-Paper, Drittmittel-Skizze, Integration in die Lehre. Schlussbotschaft: XAMA macht sichtbar, wie Data-Analytics-Agenten erinnern — und wie diese Erinnerungen erklärbar, auditierbar und verantwortbar werden. (Umsetzungsreif wirken, nicht überambitioniert.)',
+      'In den ersten zwölf Monaten in vier Schritten. \n Monat 1–3: den Leitfall präzisieren — welche Daten, was wird gespeichert, wann abgerufen, wo entstehen Accountability-Risiken; Baseline wählen, Praxispartner identifizieren. \n Monat 4–6: ein Prototyp für Explainable Memory Retrieval, der dokumentiert, welche gespeicherten Erfahrungen an einer Empfehlung beteiligt waren. \n Monat 7–9: XAMA-Bench v0.1 mit Metriken für Faithfulness, Logging und Erklärungsstabilität — gut in studentische Projekt- und Abschlussarbeiten integrierbar. \n Monat 10–12: Transfer und Publikation — Workshop-Paper, Drittmittel-Skizze, Integration in die Lehre. Schlussbotschaft: XAMA macht sichtbar, wie Data-Analytics-Agenten erinnern — und wie diese Erinnerungen erklärbar, auditierbar und verantwortbar werden. \n\n HAW-ForschungsPraxis (BMBF), ZIM (Das Zentrale Innovationsprogramm Mittelstand)',
   },
   {
     id: 'title',
