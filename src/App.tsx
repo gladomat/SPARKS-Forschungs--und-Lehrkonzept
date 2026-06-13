@@ -190,7 +190,7 @@ export const SLIDES: SlideDefinition[] = [
     section: 'didactic-design',
     presenterTitle: 'Self-Study Architecture',
     component: <Slide06SelfStudyArchitecture />,
-    steps: 5,
+    steps: 6,
     notes: 'Because 130 of 150 hours are self-study, this phase must be carefully designed. The four-part loop, repeated weekly, gives students a predictable rhythm. \n- The microlearning format is compatible with the SPARKS avatar production format — short, scriptable, modular units that can be updated each semester without rebuilding the course. \n- Every week produces something concrete: a data audit, an EDA notebook, a statistical brief, a model evaluation, a final data story. \n- The weekly checkpoint is mastery-oriented: the deliverable is a submit–feedback–revise loop students can repeat until they get it right. Feedback scales in three tiers: automated quizzes and flash cards give instant feedback, AI-assisted iteration on artifacts is allowed and documented, and peer review plus the live sessions handle what automation cannot judge. \n- The model behind this is Flipped Classroom 2.0: foundations move into the asynchronous phase, but unlike the classic flipped classroom, the async phase is itself an active-learning loop — input, guided practice, applied task, checkpoint. Synchronous time is then reserved for: applying, evaluating, defending. Karadeniz et al. (2025) validated this progression and found it particularly effective for students who work alongside their studies. The synchronous time is concentrated where students need it most — statistics in Week 3 gets two live sessions instead of one, to allow for more help for the mixed cohort on this harder subject.',
   },
   {
@@ -209,7 +209,7 @@ export const SLIDES: SlideDefinition[] = [
     presenterTitle: 'Assessment Concept',
     component: <Slide08AssessmentConcept />,
     steps: 8,
-    notes: 'How is competence assured when students have free access to AI? The dual-lane approach follows Fawns et al. (2025): AI is allowed where professional judgment is assessed, restricted where personal competence must be verified. Four artefacts trace the weekly arc — Week 2 data audit + EDA notebook, Week 3 statistical reasoning brief, Week 4 live defense, Week 5 final data story. The live defense is the assured instrument you just saw at the close of the Studio: in-person, unaided, students answer methodological questions from a non-technical audience and own the limits of their analysis. The other three submissions are digital and may use AI — but AI use must be documented and reflected on. This is not an AI-ban policy; it is an AI-honest one.',
+    notes: 'How is competence assured when students have free access to AI? The dual-lane approach follows Fawns et al. (2025): AI is allowed where professional judgment is assessed, restricted where personal competence must be verified. \n- The live defense is the assured instrument you just saw at the close of the Studio: in-person, unaided, students answer methodological questions from a non-technical audience and own the limits of their analysis. \n- The integrated Lane are digital hand-ins. Four artefacts trace the weekly arc — Week 2 data audit + EDA notebook, Week 3 statistical reasoning brief, Week 4 live defense, Week 5 final data story.  The digital submisions may use AI — but AI use must be documented and reflected on. This is not an AI-ban policy; it is an AI-honest one.',
   },
   {
     id: 'why-this-works',

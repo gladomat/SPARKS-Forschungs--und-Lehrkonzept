@@ -43,28 +43,28 @@ export const Slide06SelfStudyArchitecture: React.FC = () => {
         </span>
         <div className="grid grid-cols-2 gap-5">
           <LoopCard
-            visible={step >= 0}
+            visible={step >= 1}
             label="01 · Input"
             title="Microlearning"
             detail="Avatar-narrated units, 15–30 min, modular and swappable"
             icon={PlayCircle}
           />
           <LoopCard
-            visible={step >= 1}
+            visible={step >= 2}
             label="02 · Guided Practice"
             title="Hands-on Practice"
             detail="Work the running case in notebooks or low-code tools"
             icon={Wrench}
           />
           <LoopCard
-            visible={step >= 2}
+            visible={step >= 3}
             label="03 · Applied Task"
             title="Produce an Artifact"
             detail="Notebook, brief, dashboard, model evaluation, or data story; quizzes and flash cards for self-study"
             icon={MessageCircle}
           />
           <LoopCard
-            visible={step >= 3}
+            visible={step >= 4}
             label="04 · Checkpoint"
             title="Mastery-Oriented"
             detail="Small deliverable with repeatable feedback loops"
@@ -74,7 +74,7 @@ export const Slide06SelfStudyArchitecture: React.FC = () => {
 
         <motion.div
           initial={false}
-          animate={{ opacity: step >= 4 ? 1 : 0, y: step >= 4 ? 0 : 16 }}
+          animate={{ opacity: step >= 5 ? 1 : 0, y: step >= 5 ? 0 : 16 }}
           transition={{ duration: 0.4 }}
           className="group relative border border-action-orange/20 bg-action-orange/[0.04] rounded-lg px-6 py-4 flex flex-col gap-2 cursor-help"
         >
