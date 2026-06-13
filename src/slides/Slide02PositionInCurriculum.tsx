@@ -56,10 +56,24 @@ export const Slide02PositionInCurriculum: React.FC = () => {
   return (
     <SlideContent label="Positioning" title="Position in the Curriculum">
       <div className="max-w-5xl flex flex-col gap-4">
-        {/* Shared spine — every programme */}
+        {/* Three program tracks on a warm ground */}
         <motion.div
           initial={false}
           animate={{ opacity: step >= 0 ? 1 : 0, y: step >= 0 ? 0 : 16 }}
+          transition={{ duration: 0.4 }}
+          className="rounded-3xl bg-action-orange/[0.05] p-5"
+        >
+          <div className="grid grid-cols-3 gap-5">
+            {TRACKS.map((t) => (
+              <TrackCard key={t.program} {...t} />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Shared spine — every programme */}
+        <motion.div
+          initial={false}
+          animate={{ opacity: step >= 1 ? 1 : 0, y: step >= 1 ? 0 : 16 }}
           transition={{ duration: 0.4 }}
           className="flex flex-col gap-2"
         >
@@ -74,20 +88,6 @@ export const Slide02PositionInCurriculum: React.FC = () => {
               >
                 {m}
               </span>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Three program tracks on a warm ground */}
-        <motion.div
-          initial={false}
-          animate={{ opacity: step >= 1 ? 1 : 0, y: step >= 1 ? 0 : 16 }}
-          transition={{ duration: 0.4 }}
-          className="rounded-3xl bg-action-orange/[0.05] p-5"
-        >
-          <div className="grid grid-cols-3 gap-5">
-            {TRACKS.map((t) => (
-              <TrackCard key={t.program} {...t} />
             ))}
           </div>
         </motion.div>
