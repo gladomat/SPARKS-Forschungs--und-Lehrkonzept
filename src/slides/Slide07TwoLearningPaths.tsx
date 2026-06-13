@@ -48,7 +48,7 @@ export const Slide07TwoLearningPaths: React.FC = () => {
       <div className="max-w-3xl flex flex-col gap-5">
         <div className="grid grid-cols-2 gap-5">
           <PathCard
-            visible={step >= 0}
+            visible={step >= 1}
             label="Communication & Design"
             audience="Copy & Story · Design & Arts"
             tool="low-code, browser-based, AI-assisted"
@@ -56,7 +56,7 @@ export const Slide07TwoLearningPaths: React.FC = () => {
             icon={Palette}
           />
           <PathCard
-            visible={step >= 1}
+            visible={step >= 2}
             label="Data & Analytics"
             audience="Media & Data · quantitatively inclined"
             tool="notebook-based, Python ecosystem"
@@ -67,7 +67,7 @@ export const Slide07TwoLearningPaths: React.FC = () => {
 
         <motion.div
           initial={false}
-          animate={{ opacity: step >= 2 ? 1 : 0, y: step >= 2 ? 0 : 16 }}
+          animate={{ opacity: step >= 3 ? 1 : 0, y: step >= 3 ? 0 : 16 }}
           transition={{ duration: 0.4 }}
           className="border-2 border-action-orange bg-action-orange/[0.04] rounded-lg px-6 py-5 flex flex-col gap-1"
         >
