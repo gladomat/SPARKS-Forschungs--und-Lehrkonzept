@@ -61,7 +61,7 @@ export const SLIDES: SlideDefinition[] = [
       />
     ),
     notes:
-      'Ich möchte Ihnen mein Forschungskonzept vorstellen. XAMA: Explainable and Auditable Memory for Data Analystics Agents',
+      'Ich möchte Ihnen mein Forschungskonzept vorstellen. XAMA: Explainable and Auditable Memory for Data Analystics Agents. Hier geht es also um das Gedächtnis eines KI-Agenten.',
   },
   {
     id: 'xama-genealogy',
@@ -71,7 +71,7 @@ export const SLIDES: SlideDefinition[] = [
     component: <Slide12Genealogy />,
     steps: 5,
     notes:
-      'Meine Forschung liegt an der Schnittstelle von angewandter KI, heterogenen Daten und Erklärbarkeit — etwa die multimodale Alzheimer-/FTD-Arbeit, die sichtbar macht, welche Datenmodalitäten eine Entscheidung prägen. XAMA führt diese Linie weiter: Nicht nur das Modell, auch die Erinnerungsstrukturen müssen erklärbar sein. Die Idee vom Gedächtnis ist alt — Soar, Tulving —, und moderne KI-Agenten bekommen nun persistente Gedächtnissysteme. Daraus entsteht die neue angewandte Frage: Wie kontrollieren, erklären und auditieren wir dieses Gedächtnis, wenn es reale Entscheidungen beeinflusst?',
+      'Meine Forschung liegt an der Schnittstelle von angewandter KI, heterogenen Daten und Erklärbarkeit — etwa die multimodale Demenz-Forschungsarbeit, die sichtbar macht, welche Datenmodalitäten eine Entscheidung prägen. XAMA führt diese Linie weiter: Nicht nur das Modell, auch die Erinnerungsstrukturen müssen erklärbar sein. Die Idee vom Gedächtnis ist alt — Soar, Tulving —, und moderne KI-Agenten bekommen nun persistente Gedächtnissysteme. Daraus entsteht die neue angewandte Frage: Wie kontrollieren, erklären und auditieren wir dieses Gedächtnis, wenn es reale Entscheidungen beeinflusst?',
   },
   {
     id: 'xama-leitfall',
