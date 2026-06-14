@@ -4,7 +4,6 @@ import { PresenterLayout } from './components/PresenterLayout';
 import { ShimmerOverlay } from './components/ShimmerOverlay';
 import { SlideTitle } from './components/SlideTitle';
 import { Slide02PositionInCurriculum } from './slides/Slide02PositionInCurriculum';
-import { Slide03CoreThesis } from './slides/Slide03CoreThesis';
 import { Slide04RunningCase } from './slides/Slide04RunningCase';
 import { Slide04DetailMethods } from './slides/Slide04DetailMethods';
 import { Slide05FiveWeekRoadmap } from './slides/Slide05FiveWeekRoadmap';
@@ -111,7 +110,7 @@ export const SLIDES: SlideDefinition[] = [
     component: <Slide16ProfessurFit />,
     steps: 4,
     notes:
-      'Für die Professur Data Science ist XAMA ein klarer Forschungsanker. \n- Fachlich: Data-Analytics-Agenten arbeiten genau mit den prozessgenerierten Daten des Kommunikationsumfelds — Kampagnenmetriken, Zielgruppenreaktionen, Entscheidungslogs. \n- Methodisch: Datenqualität, Explainable AI, Evaluation, Audit Trails, agentische Systeme. \n- Lehr-Forschung unmittelbar: Studierende bauen solche Agenten, evaluieren Retrieval, untersuchen Bias-Propagation, testen XAMA-Bench. \n- Transfer + Drittmittel projektförmig gedacht: Ein Praxispartner bringt einen realen Agenten oder Datensatz ein. Der EU AI Act macht Logging, Transparenz und Aufsicht zusätzlich relevant — das Hauptargument ist aber breiter: Accountability, weil diese Agenten datenbasierte Entscheidungen in Organisationen beeinflussen.',
+      'Für die Professur Data Science ist XAMA ein klarer Forschungsanker. \n- Fachlich: Data-Analytics-Agenten arbeiten genau mit den prozessgenerierten Daten des Kommunikationsumfelds — Kampagnenmetriken, Zielgruppenreaktionen, Entscheidungslogs. \n- Methodisch: Datenqualität, Explainable AI, Evaluation, Audit Trails, agentische Systeme. \n- Lehr-Forschung unmittelbar: Studierende bauen solche Agenten, evaluieren Retrieval (Abruf), untersuchen Bias-Propagation, testen XAMA-Bench. \n- Transfer + Drittmittel projektförmig gedacht: Ein Praxispartner bringt einen realen Agenten oder Datensatz ein. Der EU AI Act macht Logging, Transparenz und Aufsicht zusätzlich relevant — das Hauptargument ist aber breiter: Accountability, weil diese Agenten datenbasierte Entscheidungen in Organisationen beeinflussen.',
   },
   {
     id: 'xama-roadmap',
@@ -146,16 +145,7 @@ export const SLIDES: SlideDefinition[] = [
     presenterTitle: 'Position in the Curriculum',
     component: <Slide02PositionInCurriculum />,
     steps: 4,
-    notes: 'Data Science is a MIND module taken by all three Bachelor programmes in Semester 5 — Copy & Story, Media & Data, and Design & Arts. They do not arrive empty-handed and they do not arrive identical. \n- Every student shares a foundation: Scientific Methods for research questions and validity, Artificial Intelligence for algorithmic systems context, Coding & Prompting for notebooks and computational literacy, and Marketing Technologies for the data infrastructure of the field. What differs is the craft each programme brings — ranging over editorial judgement, data analystics, and visual and spatial thinking. \n- Data Science is the convergence point: the shared spine plus each programme\'s craft integrate into one defensible, data-driven decision. \n- This is also the bridge to the Practice Project and Bachelor Thesis that follow in Semesters 6 and 7. This is a cross-programme module, and later on I will show how I calibrate tool depth so a copywriter and a data analyst both succeed.',
-  },
-  {
-    id: 'core-thesis',
-    part: 'teaching',
-    section: 'positioning',
-    presenterTitle: 'Core Thesis',
-    component: <Slide03CoreThesis />,
-    steps: 5,
-    notes: 'This is the thesis the whole module hangs on. By semester five every student already shares a foundation in AI and Coding & Prompting, and each programme brings its own craft on top — analytics, copy, or design. Data Science is where those strands integrate into one applied workflow: \n- it turns media data \n- through an applied workflow \n- into defensible decisions, the disciplined path from a business question to a data backed recommendation you can stand behind. \n- The driving question is: which media or marketing decision is actually justified by this data — and, just as important, which is not.',
+    notes: 'Data Science is a MIND module taken by all three Bachelor programmes in Semester 5 — Copy & Story, Media & Data, and Design & Arts. They do not arrive empty-handed and they do not arrive identical. \n- Every student shares a foundation: Scientific Methods for research questions and validity, Artificial Intelligence for algorithmic systems context, Coding & Prompting for notebooks and computational literacy, and Marketing Technologies for the data infrastructure of the field. What differs is the craft each programme brings — ranging over editorial judgement, data analystics, and visual and spatial thinking. \n- Data Science is the convergence point: the shared foundation plus each programme\'s craft integrate into one defensible, data-driven decision. \n- This is also the bridge to the Practice Project and Bachelor Thesis that follow in Semesters 6 and 7.',
   },
   {
     id: 'running-case',
@@ -163,8 +153,8 @@ export const SLIDES: SlideDefinition[] = [
     section: 'positioning',
     presenterTitle: 'Running Case & Workflow',
     component: <Slide04RunningCase />,
-    steps: 3,
-    notes: 'The course pipeline includes — Question, Data, Cleaning, EDA, Statistics, Modelling, Evaluation, Interpretation, Recommendation — is the backbone of the module. \n - The course is accompanied by one example running case. The marketing campaign or platform-performance dataset includes audience segments, creative variants, impressions/clicks/conversions, engagement metrics, channel information, and a recommendation or targeting component. It can be swapped each semester without restructuring the module. \n- Students move through the full data-science cycle over the five weeks, always on the same running case — each week deepens one stage of the pipeline, according to with the Five-Week Roadmap. ',
+    steps: 4,
+    notes: 'The course pipeline includes — Question, Data, Cleaning, EDA, Statistics, Modelling, Evaluation, Interpretation, Recommendation — is the backbone of the module. \n- The whole workflow serves one driving question — which media or marketing decision is actually justified by this data, and which is not. \n - The course is accompanied by one example running case. The dataset comes from a marketing campaign and covers the essentials: who was targeted (audience segments), which ad versions ran (creative variants), how they performed (impressions, clicks, conversions, engagement), and on which channels — plus a decision to make, such as a targeting or recommendation task. It can be swapped each semester without restructuring the module. \n- Students move through the full data-science cycle over the five weeks, always on the same running case — each week deepens one stage of the pipeline, according to the Five-Week Roadmap. ',
   },
   {
     id: 'two-learning-paths',
@@ -224,7 +214,7 @@ export const SLIDES: SlideDefinition[] = [
     part: 'teaching',
     section: 'positioning',
     hidden: true,
-    parent: 10, // running-case
+    parent: 9, // running-case
     presenterTitle: 'Detail: Methods & Models',
     component: <Slide04DetailMethods />,
     notes:
@@ -278,25 +268,24 @@ const NAV = [
         label: 'Positioning',
         slides: [
           { id: 'position-in-curriculum', label: 'Curriculum Position', number: 9 },
-          { id: 'core-thesis', label: 'Core Thesis', number: 10 },
-          { id: 'running-case', label: 'Running Case & Workflow', number: 11 },
+          { id: 'running-case', label: 'Running Case & Workflow', number: 10 },
         ],
       },
       {
         id: 'didactic-design',
         label: 'Didactic Design',
         slides: [
-          { id: 'two-learning-paths', label: 'Two Learning Paths', number: 12 },
-          { id: 'five-week-roadmap', label: 'Five-Week Roadmap', number: 13 },
-          { id: 'self-study-architecture', label: 'Self-Study Architecture', number: 14 },
-          { id: 'data-science-studio', label: 'Data Science Studio', number: 15 },
+          { id: 'two-learning-paths', label: 'Two Learning Paths', number: 11 },
+          { id: 'five-week-roadmap', label: 'Five-Week Roadmap', number: 12 },
+          { id: 'self-study-architecture', label: 'Self-Study Architecture', number: 13 },
+          { id: 'data-science-studio', label: 'Data Science Studio', number: 14 },
         ],
       },
       {
         id: 'assessment',
         label: 'Assessment',
         slides: [
-          { id: 'assessment-concept', label: 'Assessment Concept', number: 16 },
+          { id: 'assessment-concept', label: 'Assessment Concept', number: 15 },
         ],
       },
     ],

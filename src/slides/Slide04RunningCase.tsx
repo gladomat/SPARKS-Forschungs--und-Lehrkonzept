@@ -184,12 +184,27 @@ export const Slide04RunningCase: React.FC = () => {
           </svg>
         </motion.div>
 
+        {/* Driving question — sandwiched between the workflow and the running case */}
+        <motion.div
+          initial={false}
+          animate={{ opacity: step >= 1 ? 1 : 0, y: step >= 1 ? 0 : 12 }}
+          transition={{ duration: 0.4 }}
+          className="border-2 border-action-orange bg-action-orange/[0.04] rounded-lg px-6 py-5"
+        >
+          <span className="font-mono text-[0.6rem] text-action-orange tracking-[0.15em] uppercase block mb-2">
+            The driving question
+          </span>
+          <span className="font-headline text-lg font-bold text-deep-onyx italic">
+            Which media or marketing decision is justified by this data — and which is not?
+          </span>
+        </motion.div>
+
         {/* Info cards (side by side) */}
         <div className="grid grid-cols-12 gap-4">
           {/* Running case */}
           <motion.div
             initial={false}
-            animate={{ opacity: step >= 1 ? 1 : 0, y: step >= 1 ? 0 : 16 }}
+            animate={{ opacity: step >= 2 ? 1 : 0, y: step >= 2 ? 0 : 16 }}
             transition={{ duration: 0.4 }}
             className="col-span-7 relative bg-white border border-surface-container-high rounded-lg p-6 flex flex-col gap-3 overflow-hidden"
           >
@@ -207,7 +222,7 @@ export const Slide04RunningCase: React.FC = () => {
           {/* Emphasis */}
           <motion.div
             initial={false}
-            animate={{ opacity: step >= 2 ? 1 : 0, y: step >= 2 ? 0 : 12 }}
+            animate={{ opacity: step >= 3 ? 1 : 0, y: step >= 3 ? 0 : 12 }}
             transition={{ duration: 0.4 }}
             className="col-span-5 border border-action-orange/20 bg-action-orange/[0.04] rounded-lg px-6 py-4 flex items-start gap-4"
           >
@@ -225,7 +240,7 @@ export const Slide04RunningCase: React.FC = () => {
         {/* Discreet jump to the hidden methods detail slide */}
         <motion.button
           initial={false}
-          animate={{ opacity: step >= 2 ? 1 : 0 }}
+          animate={{ opacity: step >= 3 ? 1 : 0 }}
           transition={{ duration: 0.4 }}
           onClick={() => goToSlide('methods-detail')}
           className="self-end flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.15em] uppercase text-data-gray hover:text-action-orange transition-colors cursor-pointer"
