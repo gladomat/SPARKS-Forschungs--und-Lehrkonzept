@@ -101,7 +101,7 @@ export const SLIDES: SlideDefinition[] = [
     component: <Slide15ResearchQuestions />,
     steps: 3,
     notes:
-      'Die drei Säulen werden über drei technische Fragen konkret. FF1: Lassen sich Shapley- und graphbasierte Attribution auf Multi-Turn Agent Memory übertragen, ohne nachträglich plausibel klingende Begründungen zu erzeugen? Im Leitfall: Welche Kampagnen oder A/B-Tests haben die Empfehlung wirklich beeinflusst? \n FF2: Wie müssen Write-Gating, Validierung und Forgetting gestaltet sein, damit verzerrte Annahmen, temporäre Effekte oder fehlerhafte Messungen nicht langfristig weiterwirken? \n FF3: Welche Metriken machen Faithfulness, Logging-Vollständigkeit, Erklärungsstabilität und Forgetting Correctness messbar? Jede Frage führt zum Data-Analytics-Agenten zurück.',
+      'Die drei Säulen werden über drei technische Fragen konkret. \n FF1: Wie lässt sich verlässlich erklären, welches frühere Wissen die Empfehlung eines Agenten wirklich geprägt hat — und zwar so, dass die Erklärung die tatsächliche Erinnerung zeigt und nicht nachträglich halluziniert wird? Im Leitfall: Welche Kampagnen oder A/B-Tests haben die Empfehlung wirklich beeinflusst? \n FF2: Wie steuern wir, was ein Agent speichert, prüft und wieder vergisst, damit falsche, verzerrte oder veraltete Annahmen nicht dauerhaft hängen bleiben? \n FF3: Womit lässt sich überhaupt messen, ob ein solches Gedächtnis vertrauenswürdig ist — ob die Erklärungen verlässlich und stabil sind, alles lückenlos protokolliert wird und das Vergessen wirklich funktioniert? Jede Frage führt zum Data-Analytics-Agenten zurück.',
   },
   {
     id: 'xama-fit',

@@ -7,19 +7,22 @@ const QUESTIONS = [
   {
     n: 'FF1',
     pillar: 'Explainable Memory Retrieval',
-    question: 'Wie lassen sich Shapley-basierte und graphbasierte Attributionsverfahren auf Multi-Turn Agent Memory übertragen, ohne post-hoc-rationalisierte Erklärungen zu erzeugen?',
+    question: 'Lässt sich nachvollziehbar machen, woran sich ein Agent erinnert — und warum?',
+    method: 'Attributionsverfahren (Shapley, graphbasiert) für mehrstufiges Agenten-Gedächtnis, ohne nachträglich plausibel klingende Erklärungen.',
     case: 'Welche früheren Kampagnen, A/B-Tests oder Zielgruppenannahmen haben die aktuelle Empfehlung tatsächlich beeinflusst?',
   },
   {
     n: 'FF2',
     pillar: 'Responsible Memory Lifecycle',
-    question: 'Wie müssen Write-Gating, Validierung und Forgetting-Mechanismen gestaltet sein, um Memory Poisoning, Bias-Propagation und Scheinkonsolidierung zu reduzieren?',
+    question: 'Was darf ein Agent dauerhaft lernen — und was muss er wieder verlernen?',
+    method: 'Kontrolliertes Speichern (Write-Gating), Validierung und gezieltes Vergessen gegen verfälschtes Gedächtnis und sich fortpflanzende Verzerrungen.',
     case: 'Was darf der Agent aus früheren Kampagnen dauerhaft lernen — und was muss er korrigieren oder löschen?',
   },
   {
     n: 'FF3',
     pillar: 'Evaluation & Benchmarking',
-    question: 'Welche Metriken messen Faithfulness, Logging-Vollständigkeit, Erklärungsstabilität und Forgetting Correctness in agentischen Memory-Systemen?',
+    question: 'Wie misst man, ob das Gedächtnis eines Agenten vertrauenswürdig ist?',
+    method: 'Kennzahlen für Treue der Erklärung (Faithfulness), Protokoll-Vollständigkeit, Stabilität und korrektes Vergessen.',
     case: 'Können Menschen die Agentenempfehlung prüfen und auditieren?',
   },
 ];
@@ -47,6 +50,10 @@ export const Slide15ResearchQuestions: React.FC = () => {
               </div>
               <p className="font-headline text-[0.98rem] font-bold text-deep-onyx leading-snug mb-2">
                 {q.question}
+              </p>
+              <p className="font-body text-xs text-data-gray italic leading-snug mb-2">
+                <span className="font-semibold not-italic">Methodisch: </span>
+                {q.method}
               </p>
               <p className="font-body text-sm text-secondary leading-relaxed">
                 <span className="font-semibold text-action-orange">Im Leitfall: </span>
