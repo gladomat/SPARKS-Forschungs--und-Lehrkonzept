@@ -81,7 +81,7 @@ export const SLIDES: SlideDefinition[] = [
     component: <Slide13Leitfall />,
     steps: 4,
     notes:
-      'Stellen Sie sich einen Data-Analytics-Agenten in einer Agentur oder Marketingabteilung vor:\n- Er analysiert Kampagnendaten, lernt aus A/B-Tests,\n- speichert Zielgruppen- und Performance-Erkenntnisse und unterstützt die nächste Budget- oder Messaging-Entscheidung. Hier wird Memory kritisch \n— der Agent empfiehlt nicht nur auf Basis des Prompts, sondern auf Basis dessen, woran er sich erinnert. \n- Die zentrale These lautet: Agent Memory ist in datengetriebenen Kommunikationsprozessen keine Komfortfunktion, sondern eine zweite Entscheidungsebene. XAMA macht diese Ebene erklärbar und auditierbar.',
+      'Stellen Sie sich einen Data-Analytics-Agenten in einer Agentur oder Marketingabteilung vor:\n- Er analysiert Kampagnendaten, lernt aus A/B-Tests,\n- speichert Zielgruppen- und Performance-Erkenntnisse und unterstützt die nächste Budget-Entscheidung. Hier wird Memory kritisch \n— der Agent empfiehlt nicht nur auf Basis des Prompts, sondern auf Basis dessen, woran er sich erinnert. \n- Die zentrale These lautet: Agent Memory ist in datengetriebenen Kommunikationsprozessen keine Komfortfunktion, sondern eine zweite Entscheidungsebene. XAMA macht diese Ebene erklärbar und auditierbar.',
   },
   {
     id: 'xama-pillars',
@@ -209,7 +209,7 @@ export const SLIDES: SlideDefinition[] = [
     presenterTitle: 'Assessment Concept',
     component: <Slide08AssessmentConcept />,
     steps: 8,
-    notes: 'How is competence assured when students have free access to AI? The dual-lane approach follows Fawns et al. (2025): AI is allowed where professional judgment is assessed, restricted where personal competence must be verified. \n- The live defense is the assured instrument you just saw at the close of the Studio: in-person, unaided, students answer methodological questions from a non-technical audience and own the limits of their analysis. \n- The integrated Lane are digital hand-ins. Four artefacts trace the weekly arc — Week 2 data audit + EDA notebook, Week 3 statistical reasoning brief, Week 4 live defense, Week 5 final data story.  The digital submisions may use AI — but AI use must be documented and reflected on. This is not an AI-ban policy; it is an AI-honest one.',
+    notes: 'How is competence assured when students have free access to AI? The dual-lane approach follows Fawns et al. (2025): AI is allowed where professional judgment is assessed, restricted where personal competence must be verified. \n- The live defense is the assured instrument you just saw at the close of the Studio: in-person, unaided, students answer methodological questions from a non-technical audience and own the limits of their analysis. \n- The integrated Lane are digital hand-ins. \n- Four artefacts trace the weekly arc — Week 2 data audit + EDA notebook, Week 3 statistical reasoning brief, Week 4 live defense, Week 5 final data story.  The digital submisions may use AI — but AI use must be documented and reflected on. This is not an AI-ban policy; it is an AI-honest one.',
   },
   {
     id: 'why-this-works',
