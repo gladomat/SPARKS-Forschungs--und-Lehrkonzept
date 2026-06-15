@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'motion/react';
+import { SlideStepContext } from '../App';
 
 interface SlideTitleProps {
   label: string;
@@ -9,7 +10,18 @@ interface SlideTitleProps {
   author: string;
   image?: string;
   imageAlt?: string;
+  /**
+   * When provided, enables the step-driven acronym build-up (slide 1).
+   * Maps a subtitle word to the step (1-based) at which it pulses for emphasis.
+   * The title is split into letters; letter i latches (grows + recolors) at step i+1.
+   */
+  wordHighlights?: Record<string, number>;
 }
+
+// Snappy "pop" spring — used for the latching XAMA letters.
+const POP = { type: 'spring', stiffness: 400, damping: 17 } as const;
+// Timed up-and-back pulse for a subtitle word: rises fast, eases back down.
+const PULSE = { duration: 0.6, ease: 'easeInOut', times: [0, 0.4, 1] } as const;
 
 export const SlideTitle: React.FC<SlideTitleProps> = ({
   label,
@@ -19,7 +31,10 @@ export const SlideTitle: React.FC<SlideTitleProps> = ({
   author,
   image,
   imageAlt = '',
+  wordHighlights,
 }) => {
+  const step = useContext(SlideStepContext);
+  const animated = !!wordHighlights;
   return (
     <div className="w-full h-full flex flex-col justify-center relative overflow-hidden">
       {/* Background grid */}
@@ -48,11 +63,50 @@ export const SlideTitle: React.FC<SlideTitleProps> = ({
             </div>
 
             <h1 className="font-headline text-[5.5rem] font-extrabold leading-[1.05] tracking-tight text-deep-onyx mb-6">
-              {title}
+              {animated
+                ? title.split('').map((letter, i) => {
+                    const latched = step >= i + 1; // letter i latches at step i+1
+                    return (
+                      <motion.span
+                        key={i}
+                        className="inline-block"
+                        style={{ transformOrigin: 'bottom center', whiteSpace: 'pre' }}
+                        initial={false}
+                        animate={{
+                          scale: latched ? 1.25 : 1,
+                          color: latched ? '#FF4E07' : '#0B0B0B',
+                        }}
+                        transition={POP}
+                      >
+                        {letter}
+                      </motion.span>
+                    );
+                  })
+                : title}
             </h1>
 
             <p className="font-body text-[1.35rem] italic text-secondary leading-relaxed max-w-2xl mb-8">
-              {subtitle}
+              {animated
+                ? subtitle.split(' ').map((word, i) => {
+                    const target = wordHighlights![word];
+                    // Spotlight: only the word for the current step is enlarged; it
+                    // returns to normal as soon as the next press advances the step.
+                    const active = target !== undefined && step === target;
+                    return (
+                      <motion.span
+                        key={i}
+                        className="inline-block"
+                        style={{ transformOrigin: 'bottom center', whiteSpace: 'pre' }}
+                        initial={false}
+                        animate={{ scale: active ? [1, 1.18, 1] : 1 }}
+                        transition={active ? PULSE : { duration: 0 }}
+                      >
+                        {word}
+                        {i < subtitle.split(' ').length - 1 ? ' ' : ''}
+                      </motion.span>
+                    );
+                  })
+                : subtitle}
             </p>
 
             <div className="w-24 h-[2px] bg-action-orange mb-8" />

@@ -48,11 +48,13 @@ export const SLIDES: SlideDefinition[] = [
     part: 'forschung',
     section: 'forschung-intro',
     presenterTitle: 'XAMA — Forschungskonzept',
+    steps: 5,
     component: (
       <SlideTitle
         label="Forschungskonzept"
         title="XAMA"
         subtitle="Explainable and Auditable Memory for Data-Analytics Agents"
+        wordHighlights={{ Explainable: 1, Auditable: 2, Memory: 3, Agents: 4 }}
         meta="Professur Data Science"
         author="Dr. Paul-Glad Mihai, 19.06.2026, SPARKS University of Applied Sciences, Brands & Communication"
         image="/images/xama-brain.png"
