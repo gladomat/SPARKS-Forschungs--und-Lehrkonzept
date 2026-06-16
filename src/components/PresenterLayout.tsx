@@ -1,5 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SlideStepContext } from '../App';
+
+/** Live wall-clock time, updated every second. */
+const Clock: React.FC = () => {
+  const [now, setNow] = useState(() => new Date());
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <span className="font-mono text-sm tracking-widest tabular-nums text-white/80">
+      {now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+    </span>
+  );
+};
 
 interface PresenterSlide {
   id: string;
@@ -44,10 +58,13 @@ export const PresenterLayout: React.FC<PresenterLayoutProps> = ({
     <div className="w-full h-screen bg-deep-onyx text-white flex flex-col overflow-hidden">
       <header className="flex justify-between items-center px-10 h-14 border-b border-white/10 shrink-0">
         <span className="font-headline font-extrabold tracking-tighter">Presenter View</span>
-        <span className="font-mono text-xs tracking-widest uppercase text-white/60">
-          Slide {currentIndex + 1} / {slides.length}
-          {current.steps ? ` · step ${currentStep + 1} / ${current.steps}` : ''}
-        </span>
+        <div className="flex items-center gap-6">
+          <span className="font-mono text-xs tracking-widest uppercase text-white/60">
+            Slide {currentIndex + 1} / {slides.length}
+            {current.steps ? ` · step ${currentStep + 1} / ${current.steps}` : ''}
+          </span>
+          <Clock />
+        </div>
       </header>
 
       <div className="flex-grow flex gap-8 px-10 py-8 overflow-hidden">

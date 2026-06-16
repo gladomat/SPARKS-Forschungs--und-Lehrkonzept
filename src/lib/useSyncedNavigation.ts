@@ -115,8 +115,8 @@ export function useSyncedNavigation(slides: SlideMeta[]) {
   // Keyboard: arrows step through sub-steps first, then move between slides.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      const isForward = e.key === 'ArrowRight' || e.key === 'ArrowDown';
-      const isBackward = e.key === 'ArrowLeft' || e.key === 'ArrowUp';
+      const isForward = e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown';
+      const isBackward = e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp';
       if (!isForward && !isBackward) return;
 
       const current = slides[state.index];
